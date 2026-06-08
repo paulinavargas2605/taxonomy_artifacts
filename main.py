@@ -1,5 +1,14 @@
 from config import supabase
 
+# Eliminar un registro
+resultado_eliminar = (
+    supabase
+    .table("tipo_usuario")
+    .delete()
+    .eq("nombre", "Administrador")
+    .execute()
+)
+
 # Insertar registro
 resultado_insertar = (
     supabase
@@ -12,6 +21,9 @@ resultado_insertar = (
     .execute()
 )
 
+print(resultado_eliminar.data)
+
+""""
 # Leer todos los registros
 resultado_leer_todo = (
     supabase
@@ -42,13 +54,7 @@ resultado_actualizar = (
     .execute()
 )
 
-# Eliminar un registro
-resultado_eliminar = (
-    supabase
-    .table("tipo_usuario")
-    .delete()
-    .eq("nombre", "Administrador General")
-    .execute()
-)
+
 
 # print(resultado.data)
+"""
