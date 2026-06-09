@@ -5,19 +5,88 @@ df = pd.read_excel("datos/Taxonomia general reescrita normalizada.xlsx")
 
 def obtener_mapa(tabla, id_columna):
 
-    respuesta = (
+    respuesta1 = (
         supabase
         .table(tabla)
         .select(f"{id_columna}, nombre")
+        .range(0, 999)
         .execute()
     )
 
+    respuesta2 = (
+        supabase
+        .table(tabla)
+        .select(f"{id_columna}, nombre")
+        .range(1000, 1999)
+        .execute()
+    )
+
+    datos = respuesta1.data + respuesta2.data
+
     return {
         fila["nombre"]: fila[id_columna]
-        for fila in respuesta.data
+        for fila in datos
     }
 
+def insertar_especies():
 
+    mapa_generos = obtener_mapa("genero", "id_genero")
+
+    especies_procesadas = set()
+
+    insertadas = 0
+    existentes = 0
+
+    for _, fila in df.iterrows():
+
+        nombre_especie = fila["Especie"]
+        nombre_genero = fila["Genero"]
+
+        clave = (nombre_especie, nombre_genero)
+
+        if clave in especies_procesadas:
+            continue
+
+        especies_procesadas.add(clave)
+
+        print(
+            f"Procesando -> Género: {nombre_genero} | "
+            f"Especie: {nombre_especie}"
+        )
+
+        id_genero = mapa_generos[nombre_genero]
+
+        existe = (
+            supabase
+            .table("especie")
+            .select("id_especie")
+            .eq("nombre", nombre_especie)
+            .eq("id_genero", id_genero)
+            .execute()
+        )
+
+        if len(existe.data) > 0:
+            existentes += 1
+            continue
+
+        (
+            supabase
+            .table("especie")
+            .insert(
+                {
+                    "nombre": nombre_especie,
+                    "id_genero": id_genero
+                }
+            )
+            .execute()
+        )
+
+        insertadas += 1
+
+        print(f"Especies insertadas: {insertadas}")
+        print(f"Especies ya existentes: {existentes}")
+
+# --------------------------------------------------------------------------------------
 def insertar_generos():
 
     mapa_familias = obtener_mapa("familia", "id_familia")
@@ -249,7 +318,8 @@ def mostrar_informacion_excel():
 # EJECUTAR LO QUE NECESITES
 # ---------------------------
 
-insertar_generos()
+insertar_especies()
+# insertar_generos()
 # insertar_familias()
 # insertar_ordenes()
 # insertar_clases()
