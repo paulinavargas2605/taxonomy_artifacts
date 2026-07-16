@@ -1,8 +1,10 @@
-from supabase import create_client
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-url = os.getenv("SUPABASE_URL")
-key = os.getenv("SUPABASE_KEY")
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+if not SUPABASE_URL or not SUPABASE_KEY:
+    raise ValueError("No se encontraron las variables SUPABASE_URL o SUPABASE_KEY en el archivo .env")

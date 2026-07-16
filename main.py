@@ -1,60 +1,16 @@
-from config import supabase
+from fastapi import FastAPI
+from app.routes.usuario_routes import router as usuario_router
+from app.routes.artefacto_routes import router as artefacto_router
 
-# Eliminar un registro
-resultado_eliminar = (
-    supabase
-    .table("tipo_usuario")
-    .delete()
-    .eq("nombre", "Administrador")
-    .execute()
+app = FastAPI(
+    title="API Taxonomía de Artefactos",
+    version="1.0"
 )
 
-# Insertar registro
-resultado_insertar = (
-    supabase
-    .table("tipo_usuario")
-    .insert(
-        {
-            "nombre": "Administrador"
-        }
-    )
-    .execute()
-)
-
-print(resultado_eliminar.data)
-
-""""
-# Leer todos los registros
-resultado_leer_todo = (
-    supabase
-    .table("tipo_usuario")
-    .select("*")
-    .execute()
-)
-
-# Leer filtrando
-resultado_leer_filtrado = (
-    supabase
-    .table("tipo_usuario")
-    .select("*")
-    .eq("nombre", "Administrador")
-    .execute()
-)
-
-# Actualizar un registro
-resultado_actualizar = (
-    supabase
-    .table("tipo_usuario")
-    .update(
-        {
-            "nombre": "Administrador General"
-        }
-    )
-    .eq("nombre", "Administrador")
-    .execute()
-)
+app.include_router(usuario_router)
+app.include_router(artefacto_router)
 
 
-
-# print(resultado.data)
-"""
+@app.get("/")
+def inicio():
+    return {"mensaje": "API funcionando correctamente"}
