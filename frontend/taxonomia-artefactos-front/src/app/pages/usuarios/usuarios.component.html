@@ -1,1 +1,129 @@
-<p>usuarios works!</p>
+<div class="contenedor">
+
+    <div class="encabezado">
+
+        <h1>Usuarios</h1>
+
+        <button
+        mat-raised-button
+        color="primary"
+        (click)="nuevoUsuario()">
+
+            Nuevo Usuario
+
+        </button>
+
+    </div>
+
+    <table
+    mat-table
+    [dataSource]="usuarios"
+    class="mat-elevation-z2">
+
+        <ng-container matColumnDef="id">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                ID
+
+            </th>
+
+            <td mat-cell *matCellDef="let usuario">
+
+                {{usuario.id_usuario}}
+
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Usuario
+
+            </th>
+
+            <td mat-cell *matCellDef="let usuario">
+
+                {{usuario.nombre_usuario}}
+
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Correo
+
+            </th>
+
+            <td mat-cell *matCellDef="let usuario">
+
+                {{usuario.correo}}
+
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="tipo">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Tipo
+
+            </th>
+
+            <td mat-cell *matCellDef="let usuario">
+
+                {{usuario.id_tipo_usuario}}
+
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Acciones
+
+            </th>
+
+            <td mat-cell *matCellDef="let usuario">
+
+                <button
+                mat-raised-button
+                color="primary"
+                (click)="editar(usuario)">
+
+                    Editar
+
+                </button>
+
+                <button
+                mat-raised-button
+                color="warn"
+                (click)="eliminar(usuario)">
+
+                    Eliminar
+
+                </button>
+
+            </td>
+
+        </ng-container>
+
+        <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"></tr>
+
+        <tr
+        mat-row
+        *matRowDef="let row;columns:displayedColumns;"></tr>
+
+    </table>
+
+</div>
