@@ -1,0 +1,39 @@
+mat-dialog-content {
+
+    width: 450px;
+    padding-top: 10px;
+
+}
+
+form {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+mat-form-field {
+
+    width: 100%;
+
+}
+
+mat-slide-toggle {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+mat-dialog-actions {
+
+    padding: 15px 0;
+
+}
+
+h2 {
+
+    margin-bottom: 15px;
+
+}

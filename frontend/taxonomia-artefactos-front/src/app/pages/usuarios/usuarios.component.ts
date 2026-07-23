@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { UsuarioFormComponent } from '../../components/usuario-form/usuario-form.component';
 
@@ -17,7 +17,8 @@ import { UsuarioFormComponent } from '../../components/usuario-form/usuario-form
     CommonModule,
     MatTableModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
@@ -35,9 +36,10 @@ export class UsuariosComponent implements OnInit{
   ];
 
   constructor(
-    private usuarioService:UsuarioService,
-    private dialog:MatDialog
-  ){}
+    private usuarioService: UsuarioService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
 
@@ -61,29 +63,45 @@ export class UsuariosComponent implements OnInit{
 
   }
 
-  nuevoUsuario(){
+  nuevoUsuario() {
 
-    const dialog=this.dialog.open(UsuarioFormComponent,{
-
-      width:'500px'
-
+    const dialog = this.dialog.open(UsuarioFormComponent, {
+      width: '500px'
     });
 
-    dialog.afterClosed().subscribe(resultado=>{
+    dialog.afterClosed().subscribe(resultado => {
 
-      if(resultado){
+      if (!resultado) return;
 
-        this.usuarioService.crear(resultado).subscribe({
+      this.usuarioService.crear(resultado).subscribe({
 
-          next:()=>{
+        next: () => {
 
-            this.listarUsuarios();
+          this.listarUsuarios();
 
-          }
+          this.snackBar.open(
+            'Usuario creado correctamente',
+            'Cerrar',
+            {
+              duration: 3000
+            }
+          );
 
-        });
+        },
 
-      }
+        error: () => {
+
+          this.snackBar.open(
+            'No fue posible crear el usuario',
+            'Cerrar',
+            {
+              duration: 3000
+            }
+          );
+
+        }
+
+      });
 
     });
 
@@ -98,24 +116,40 @@ export class UsuariosComponent implements OnInit{
 
     dialog.afterClosed().subscribe(resultado => {
 
-      if (resultado) {
+      if (!resultado) return;
 
-        this.usuarioService.actualizar(
-          usuario.id_usuario!,
-          resultado
-        ).subscribe({
+      this.usuarioService.actualizar(
+        usuario.id_usuario!,
+        resultado
+      ).subscribe({
 
-          next: () => {
+        next: () => {
 
-            this.listarUsuarios();
+          this.listarUsuarios();
 
-          },
+          this.snackBar.open(
+            'Usuario actualizado',
+            'Cerrar',
+            {
+              duration: 3000
+            }
+          );
 
-          error: (e) => console.error(e)
+        },
 
-        });
+        error: () => {
 
-      }
+          this.snackBar.open(
+            'Error al actualizar',
+            'Cerrar',
+            {
+              duration: 3000
+            }
+          );
+
+        }
+
+      });
 
     });
 
@@ -123,23 +157,35 @@ export class UsuariosComponent implements OnInit{
 
   eliminar(usuario: Usuario) {
 
-    const confirmar = confirm(
-      `¿Deseas eliminar al usuario "${usuario.nombre_usuario}"?`
-    );
+    if (!confirm(`¿Eliminar a ${usuario.nombre_usuario}?`)) return;
 
-    if (!confirmar) return;
-
-    this.usuarioService.eliminar(
-      usuario.id_usuario!
-    ).subscribe({
+    this.usuarioService.eliminar(usuario.id_usuario!).subscribe({
 
       next: () => {
 
         this.listarUsuarios();
 
+        this.snackBar.open(
+          'Usuario eliminado',
+          'Cerrar',
+          {
+            duration: 3000
+          }
+        );
+
       },
 
-      error: (e) => console.error(e)
+      error: () => {
+
+        this.snackBar.open(
+          'No fue posible eliminar el usuario',
+          'Cerrar',
+          {
+            duration: 3000
+          }
+        );
+
+      }
 
     });
 

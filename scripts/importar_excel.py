@@ -1,32 +1,32 @@
 import pandas as pd
-from config import supabase
 
-df = pd.read_excel("datos/Taxonomia general reescrita normalizada.xlsx")
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from app.database.conexion import supabase
+
+df = pd.read_excel("data/Taxonomia nuevos.xlsx")
 
 def obtener_mapa(tabla, id_columna):
+    datos = []
+    offset = 0
+    page_size = 1000
+    while True:
+        respuesta = (
+            supabase
+            .table(tabla)
+            .select(f"{id_columna}, nombre")
+            .range(offset, offset + page_size - 1)
+            .execute()
+        )
+        datos += respuesta.data
+        if len(respuesta.data) < page_size:
+            break
+        offset += page_size
 
-    respuesta1 = (
-        supabase
-        .table(tabla)
-        .select(f"{id_columna}, nombre")
-        .range(0, 999)
-        .execute()
-    )
-
-    respuesta2 = (
-        supabase
-        .table(tabla)
-        .select(f"{id_columna}, nombre")
-        .range(1000, 1999)
-        .execute()
-    )
-
-    datos = respuesta1.data + respuesta2.data
-
-    return {
-        fila["nombre"]: fila[id_columna]
-        for fila in datos
-    }
+    return {fila["nombre"]: fila[id_columna] for fila in datos}
 
 def insertar_especies():
 
@@ -318,10 +318,12 @@ def mostrar_informacion_excel():
 # EJECUTAR LO QUE NECESITES
 # ---------------------------
 
-insertar_especies()
-# insertar_generos()
-# insertar_familias()
-# insertar_ordenes()
-# insertar_clases()
-# insertar_filos()
-# mostrar_informacion_excel()
+if __name__ == "__main__":
+    print("Funciones para insertar información")
+    # insertar_especies()
+    # insertar_generos()
+    # insertar_familias()
+    # insertar_ordenes()
+    # insertar_clases()
+    # insertar_filos()
+    # mostrar_informacion_excel()
