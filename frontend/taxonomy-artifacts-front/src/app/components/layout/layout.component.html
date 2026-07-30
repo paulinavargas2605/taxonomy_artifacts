@@ -1,0 +1,27 @@
+<mat-sidenav-container class="container">
+
+  <mat-sidenav mode="side" opened class="menu">
+
+    <h2>Menu</h2>    
+
+    <a mat-button routerLink="/home">🏠 Home</a>
+
+    <a mat-button routerLink="/users">👤 Users</a>
+
+    <a mat-button routerLink="/artifacts">📚 Artifacts</a>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+      Artifact Taxonomy
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

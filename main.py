@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routes.usuario_routes import router as usuario_router
-from app.routes.artefacto_routes import router as artefacto_router
+from app.routes.user_routes import router as user_router
+from app.routes.artifact_routes import router as artifact_router
+from app.routes.category_routes import router as category_router
 
 app = FastAPI(
-    title="API Taxonomía de Artefactos",
+    title="Artifact Taxonomy API",
     version="1.0"
 )
 
@@ -17,10 +18,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(usuario_router)
-app.include_router(artefacto_router)
+app.include_router(user_router)
+app.include_router(artifact_router)
+app.include_router(category_router)
 
 
 @app.get("/")
-def inicio():
-    return {"mensaje": "API funcionando correctamente"}
+def home():
+    return {"message": "API running correctly"}

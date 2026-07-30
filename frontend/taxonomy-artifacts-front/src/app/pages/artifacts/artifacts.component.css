@@ -1,0 +1,74 @@
+.container {
+
+    width: 95%;
+    margin: auto;
+    margin-top: 30px;
+
+}
+
+.header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+h1 {
+
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+
+}
+
+table {
+
+    width: 100%;
+
+}
+
+.mat-column-id {
+
+    width: 80px;
+
+}
+
+.mat-column-user {
+
+    width: 120px;
+
+}
+
+.mat-column-active {
+
+    width: 100px;
+    text-align: center;
+
+}
+
+.mat-column-actions {
+
+    width: 220px;
+
+}
+
+.mat-column-actions button {
+
+    margin-right: 8px;
+
+}
+
+.mat-mdc-header-cell {
+
+    font-weight: bold;
+
+}
+
+.mat-mdc-row:hover {
+
+    background: #f5f5f5;
+
+}

@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>
+
+    {{data ? 'Edit User' : 'New User'}}
+
+</h2>
+
+<mat-dialog-content>
+
+<form [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Name</mat-label>
+
+        <input
+        matInput
+        formControlName="nombre_usuario">
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Email</mat-label>
+
+        <input
+        matInput
+        formControlName="correo">
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Password</mat-label>
+
+        <input
+        matInput
+        type="password"
+        formControlName="contrasena_hash">
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>User Type</mat-label>
+
+        <input
+        matInput
+        type="number"
+        formControlName="id_tipo_usuario">
+
+    </mat-form-field>
+
+</form>
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+
+<button
+mat-button
+(click)="cancel()">
+
+Cancel
+
+</button>
+
+
+<button
+mat-raised-button
+color="primary"
+(click)="save()">
+
+Save
+
+</button>
+
+</mat-dialog-actions>

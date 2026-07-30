@@ -1,0 +1,135 @@
+:host {
+
+    display: block;
+
+}
+
+mat-dialog-content {
+
+    width: 100%;
+    max-height: 65vh;
+    padding-top: 10px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+}
+
+.step-description {
+
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 10px 0;
+
+}
+
+.cards {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 10px 0;
+
+}
+
+.card {
+
+    cursor: pointer;
+    padding: 12px;
+    border: 2px solid transparent;
+    transition: border-color 0.15s ease, transform 0.1s ease;
+
+}
+
+.card:hover {
+
+    transform: translateY(-2px);
+    border-color: rgba(0, 0, 0, 0.15);
+
+}
+
+.card.selected {
+
+    border-color: #3f51b5;
+    background-color: rgba(63, 81, 181, 0.06);
+
+}
+
+.card mat-card-title {
+
+    font-size: 15px;
+
+}
+
+.card mat-card-content {
+
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 4px;
+
+}
+
+.step-actions {
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+
+}
+
+.data-form {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+
+}
+
+.data-form mat-form-field {
+
+    width: 100%;
+
+}
+
+mat-spinner {
+
+    margin: 20px auto;
+
+}
+
+/*
+  Angular Material renders the stepper's labels and connectors
+  outside this component's tree, so the normal (encapsulated) rules
+  don't reach them. ::ng-deep is used so they do apply, preventing
+  each step's text from being cut off.
+*/
+
+::ng-deep .artifact-stepper .mat-horizontal-stepper-header-container {
+
+    overflow-x: auto;
+
+}
+
+::ng-deep .artifact-stepper .mat-horizontal-stepper-header {
+
+    height: auto;
+    min-width: 90px;
+    padding: 8px 4px;
+
+}
+
+::ng-deep .artifact-stepper .mat-step-label {
+
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.2;
+    font-size: 12px;
+
+}
+
+::ng-deep .artifact-stepper .mat-stepper-horizontal-line {
+
+    min-width: 16px;
+
+}

@@ -1,0 +1,257 @@
+<h2 mat-dialog-title>
+
+    {{ editMode ? 'Edit Artifact' : 'New Artifact' }}
+
+</h2>
+
+<mat-dialog-content>
+
+<mat-stepper orientation="horizontal" linear #stepper class="artifact-stepper">
+
+    <!-- Step 1: Phylum -->
+    <mat-step [completed]="!!selectedPhylum">
+
+        <ng-template matStepLabel>Type</ng-template>
+
+        <div class="step-description">What type of artifact is it?</div>
+
+        <div class="cards" *ngIf="!loading || phyla.length">
+
+            <mat-card
+                *ngFor="let phylum of phyla"
+                class="card"
+                [class.selected]="selectedPhylum?.id_filo === phylum.id_filo"
+                (click)="selectPhylum(phylum)">
+
+                <mat-card-title>{{ phylum.etiqueta_publica || phylum.nombre }}</mat-card-title>
+
+                <mat-card-content *ngIf="phylum.descripcion_publica">
+                    {{ phylum.descripcion_publica }}
+                </mat-card-content>
+
+            </mat-card>
+
+        </div>
+
+        <mat-spinner *ngIf="loading && !phyla.length" diameter="30"></mat-spinner>
+
+        <div class="step-actions">
+            <button mat-button (click)="cancel()">Cancel</button>
+            <button mat-raised-button color="primary" [disabled]="!selectedPhylum" matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+    <!-- Step 2: Class -->
+    <mat-step [completed]="!!selectedClass">
+
+        <ng-template matStepLabel>Category</ng-template>
+
+        <div class="step-description">Choose the category</div>
+
+        <div class="cards">
+
+            <mat-card
+                *ngFor="let taxClass of classes"
+                class="card"
+                [class.selected]="selectedClass?.id_clase === taxClass.id_clase"
+                (click)="selectClass(taxClass)">
+
+                <mat-card-title>{{ taxClass.nombre }}</mat-card-title>
+
+            </mat-card>
+
+        </div>
+
+        <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
+        <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" [disabled]="!selectedClass" matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+    <!-- Step 3: Order -->
+    <mat-step [completed]="!!selectedOrder">
+
+        <ng-template matStepLabel>Group</ng-template>
+
+        <div class="step-description">Choose the group</div>
+
+        <div class="cards">
+
+            <mat-card
+                *ngFor="let order of orders"
+                class="card"
+                [class.selected]="selectedOrder?.id_orden === order.id_orden"
+                (click)="selectOrder(order)">
+
+                <mat-card-title>{{ order.nombre }}</mat-card-title>
+
+            </mat-card>
+
+        </div>
+
+        <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
+        <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" [disabled]="!selectedOrder" matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+    <!-- Step 4: Family -->
+    <mat-step [completed]="!!selectedFamily">
+
+        <ng-template matStepLabel>Subgroup</ng-template>
+
+        <div class="step-description">Choose the subgroup</div>
+
+        <div class="cards">
+
+            <mat-card
+                *ngFor="let family of families"
+                class="card"
+                [class.selected]="selectedFamily?.id_familia === family.id_familia"
+                (click)="selectFamily(family)">
+
+                <mat-card-title>{{ family.nombre }}</mat-card-title>
+
+            </mat-card>
+
+        </div>
+
+        <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
+        <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" [disabled]="!selectedFamily" matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+    <!-- Step 5: Genus -->
+    <mat-step [completed]="!!selectedGenus">
+
+        <ng-template matStepLabel>Model</ng-template>
+
+        <div class="step-description">Choose the model</div>
+
+        <div class="cards">
+
+            <mat-card
+                *ngFor="let genus of genera"
+                class="card"
+                [class.selected]="selectedGenus?.id_genero === genus.id_genero"
+                (click)="selectGenus(genus)">
+
+                <mat-card-title>{{ genus.nombre }}</mat-card-title>
+
+            </mat-card>
+
+        </div>
+
+        <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
+        <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" [disabled]="!selectedGenus" matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+    <!-- Step 6: Species -->
+    <mat-step [completed]="!!selectedSpecies">
+
+        <ng-template matStepLabel>Species</ng-template>
+
+        <div class="step-description">Choose the exact species</div>
+
+        <div class="cards">
+
+            <mat-card
+                *ngFor="let species of species"
+                class="card"
+                [class.selected]="selectedSpecies?.id_especie === species.id_especie"
+                (click)="selectSpecies(species)">
+
+                <mat-card-title>{{ species.nombre }}</mat-card-title>
+
+            </mat-card>
+
+        </div>
+
+        <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
+        <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" [disabled]="!selectedSpecies" matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+    <!-- Step 7: Artifact data -->
+    <mat-step [stepControl]="form">
+
+        <ng-template matStepLabel>Data</ng-template>
+
+        <form [formGroup]="form" class="data-form">
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Name</mat-label>
+
+                <input matInput formControlName="nombre">
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Description</mat-label>
+
+                <textarea matInput formControlName="descripcion" rows="3"></textarea>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>User</mat-label>
+
+                <mat-select formControlName="id_usuario">
+
+                    <mat-option
+                        *ngFor="let user of users"
+                        [value]="user.id_usuario">
+
+                        {{ user.nombre_usuario }}
+
+                    </mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Image URL</mat-label>
+
+                <input matInput formControlName="url_imagen">
+
+            </mat-form-field>
+
+            <mat-slide-toggle formControlName="activo">Active</mat-slide-toggle>
+
+        </form>
+
+        <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" (click)="save()">Save</button>
+        </div>
+
+    </mat-step>
+
+</mat-stepper>
+
+</mat-dialog-content>
