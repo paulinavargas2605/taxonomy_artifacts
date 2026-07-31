@@ -16,20 +16,20 @@ def list_endpoint():
     return get_all_users()
 
 
-@router.get("/{id_usuario}")
-def get_endpoint(id_usuario: int):
-    return get_one_user(id_usuario)
+@router.get("/{id_user}")
+def get_endpoint(id_user: int):
+    return get_one_user(id_user)
 
 @router.post("/")
 def create_endpoint(data: UserCreate):
     return register_user(data.model_dump())
 
 
-@router.put("/{id_usuario}")
-def update_endpoint(id_usuario: int, data: UserUpdate):
-    return modify_user(id_usuario, data.model_dump(exclude_unset=True))
+@router.put("/{id_user}")
+def update_endpoint(id_user: int, data: UserUpdate):
+    return modify_user(id_user, data.model_dump(exclude_unset=True))
 
 
-@router.delete("/{id_usuario}")
-def delete_endpoint(id_usuario: int):
-    return remove_user(id_usuario)
+@router.delete("/{id_user}")
+def delete_endpoint(id_user: int):
+    return remove_user(id_user)

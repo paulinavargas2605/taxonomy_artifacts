@@ -44,13 +44,13 @@ export class UserFormComponent {
 
     this.form=this.fb.group({
 
-      nombre_usuario:['',Validators.required],
+      username:['',Validators.required],
 
-      correo:['',[Validators.required,Validators.email]],
+      email:['',[Validators.required,Validators.email]],
 
-      contrasena_hash:[''],
+      password_hash:[''],
 
-      id_tipo_usuario:['',Validators.required]
+      id_user_type:['',Validators.required]
 
     });
 
@@ -73,9 +73,9 @@ export class UserFormComponent {
 
     const data = { ...this.form.value };
 
-    if (!data.contrasena_hash) {
+    if (!data.password_hash) {
 
-      delete data.contrasena_hash;
+      delete data.password_hash;
 
     }
 

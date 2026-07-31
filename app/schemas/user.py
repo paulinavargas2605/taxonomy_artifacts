@@ -2,17 +2,15 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 
 
-# NOTE: field names below match the database columns in Supabase
-# (kept in Spanish on purpose) — do not rename them.
 class UserCreate(BaseModel):
-    nombre_usuario: str
-    correo: EmailStr
-    contrasena_hash: str
-    id_tipo_usuario: int
+    username: str
+    email: EmailStr
+    password_hash: str
+    id_user_type: int
 
 
 class UserUpdate(BaseModel):
-    nombre_usuario: Optional[str] = None
-    correo: Optional[EmailStr] = None
-    contrasena_hash: Optional[str] = None
-    id_tipo_usuario: Optional[int] = None
+    username: Optional[str] = None
+    email: Optional[EmailStr] = None
+    password_hash: Optional[str] = None
+    id_user_type: Optional[int] = None

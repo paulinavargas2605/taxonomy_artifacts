@@ -1,0 +1,167 @@
+id_order,name,id_class
+1,Percusión,2
+2,Corte / Separación,2
+3,Palanca / Torsión,2
+4,Abrasión / Desbaste,2
+5,Medición / Trazado,2
+6,Manipulación / Mezcla,2
+7,Rallado / Corte Fino,2
+8,Extracción / Filtrado,2
+9,Dosificación / Dispensado,2
+10,Transmisión Rotativa,5
+11,Conversión Rotativo-Lineal,5
+12,Impacto / Percusión Mecánica,5
+13,Compresión-Expansión de Fluidos,5
+14,Cinemática Programada,5
+15,Atmosféricos (Sin Presión Interna),6
+16,Presurizados,6
+17,Isotérmicos / Criogénicos,6
+18,Conductos Cerrados,6
+19,Conductos Abiertos / Canales,6
+20,Utensilios de Cocción,6
+21,Almacenamiento de Alimentos,6
+22,Tejidos Planos,7
+23,Tejidos de Punto,7
+24,No‑Tejidos y Fieltros,7
+25,Laminados y Membranas Compuestas,7
+26,Materiales Flexibles Naturales,7
+27,Rodadura Terrestre,8
+28,Rodadura Guiada,8
+29,Flotación Hidrodinámica,8
+30,Sustentación Aerodinámica,8
+31,Propulsión de Reacción,8
+32,Almacenamiento Electroquímico,9
+33,Almacenamiento Mecánico,9
+34,Conversión Fotovoltaica,9
+35,Conversión Termo-Mecánica,9
+36,Conversión Electro-Mecánica Bidireccional,9
+37,Armazones Rígidos (Pórticos),10
+38,Elementos Masivos En Compresión,10
+39,Estructuras de Tracción,10
+40,Reticuladas / Geodésicas,10
+41,Módulos Prefabricados Ensamblables,10
+42,Pintura,11
+43,Fotografía,11
+44,Grabado,11
+45,Cartografía,11
+46,Ilustración,11
+47,Película Cinematográfica,12
+48,Video Analógico (Vhs),12
+49,Video Digital (Blu‑Ray),12
+50,Archivo Digital (Mp4/Mkv),12
+51,Video Digital (Blu-Ray),12
+52,Disco de Vinilo,13
+53,Cinta Magnética,13
+54,Cd / Sacd,13
+55,Archivo Digital de Audio,13
+56,Software de Escritorio,14
+57,Aplicación Móvil,14
+58,Sitio Web,14
+59,Videojuego,14
+60,Codex (Libro),15
+61,Periódico / Revista,15
+62,Documento Suelto,15
+63,Cartel / Afiche,15
+64,Partitura / Hoja Musical,15
+65,Automóvil Conectado,16
+66,Drone Autónomo,16
+67,Robot Móvil Logístico,16
+68,Termostato Inteligente,17
+69,Iluminación Inteligente,17
+70,Altavoz Inteligente,17
+71,Robot Colaborativo,18
+72,Plc Iot,18
+73,Plataforma Gemelo Digital,18
+74,Monitor Continuo de Glucosa,19
+75,Marcapasos Conectado,19
+76,Sistema Quirúrgico Robótico,19
+77,Computadora Personal,20
+78,Tabletas y Convertibles,20
+79,Accesorios de Computación,20
+80,Dispositivos Vestibles,20
+81,Dispositivos de Visualización Inmersiva,20
+82,Audio Inteligente,20
+83,Cocina Inteligente,21
+84,Limpieza Inteligente,21
+85,Cuidado de Ropa Inteligente,21
+86,Seguimiento Deportivo Especializado,22
+87,Equipos Fitness Conectados,22
+88,Equipamiento Outdoor Inteligente,22
+89,Instrumentos Electrónicos,23
+90,Controladores Musicales,23
+91,Alumbrado Público Inteligente,24
+92,Gestión de Residuos Inteligente,24
+93,Tráfico y Señalización Conectada,24
+94,Tolerancia a Herbicidas,25
+95,Resistencia a Insectos,25
+96,Biofortificación,25
+97,Producción Alimentaria / Biomoléculas,26
+98,Modelos de Investigación,26
+99,Clonación Reproductiva,26
+100,Producción Bioquímica,27
+101,Biofertilizantes,27
+102,Biorremediación,27
+103,Líneas Celulares de Mamífero,28
+104,Líneas Celulares de Insecto,28
+105,Cultivos Celulares Vegetales,28
+106,Andamios Tisulares,29
+107,Órgano‑En‑Chip,29
+108,Bioimpresión 3D,29
+109,Bioplásticos,30
+110,Biosensores Médicos,30
+111,Bioadhesivos,30
+112,Órgano-En-Chip,29
+113,Catalizadores,31
+114,Reactivos Químicos,31
+115,Adhesivos Químicos,31
+116,Solventes Especiales,31
+117,Polímeros Reactivos,31
+118,Lubricantes,32
+119,Refrigerantes,32
+120,Pigmentos Funcionales,32
+121,Absorbentes,32
+122,Aditivos Reológicos,32
+123,Fluidos Caloportadores,33
+124,Materiales Cambio de Fase (Pcm),33
+125,Retardantes de Fuego,33
+126,Aislantes Térmicos,33
+127,Materiales Termoeléctricos,33
+128,Combustibles Líquidos,34
+129,Combustibles Gaseosos,34
+130,Combustibles Sólidos,34
+131,Electrolitos de Batería,34
+132,Almacenamiento Térmico Químico,34
+133,Antibióticos,35
+134,Antivirales,35
+135,Analgésicos,35
+136,Vacunas,35
+137,Terapias Génicas,35
+138,Refracción,36
+139,Reflexión,36
+140,Difracción y Dispersión,36
+141,Filtrado y Polarización,36
+142,Cuerda Vibrante (Cordófono),37
+143,Columna de Aire Vibrante (Aerófono),37
+144,Membrana Vibrante (Membranófono),37
+145,Cuerpo Vibrante (Idiófono),37
+146,Soporte Corporal,38
+147,Provisión de Superficies,38
+148,Recinto de Almacenamiento,38
+149,Diseño Tipográfico Alfabético,39
+150,Notación Simbólica e Iconográfica,39
+151,Enrutamiento y Conmutación de Paquetes,40
+152,Almacenamiento y Servicio de Datos,40
+153,Transmisión Inalámbrica,40
+154,Registro y Estimulación Neuronal Invasiva,41
+155,Restauración Sensorial,41
+156,Partes Genéticas Estandarizadas,42
+157,Genomas Mínimos y Sintéticos,42
+158,Máquinas Vivientes Programables,42
+159,Selección Morfológica Dirigida,43
+160,Selección de Rasgos Dirigida,43
+161,Control de Plagas (Acción Biocida),44
+162,Provisión de Nutrientes (Fertilización),44
+163,Regulación del Crecimiento (Acción Hormonal),44
+164,Emisión de Luz (Luminiscencia),45
+165,Modulación de Luz,45
+166,Patronado Fotoquímico,45

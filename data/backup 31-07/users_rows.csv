@@ -1,0 +1,3 @@
+id_user,username,email,password_hash,created_at,active,id_user_type,updated_at
+4,mpvargas,mpvargas@example.com,1234,2026-07-08 20:57:55.679879+00,Activo,4,
+7,alvaro,alvaromonterroza@itm.edu.co,1234,2026-07-21 14:04:04.391487+00,Activo,4,

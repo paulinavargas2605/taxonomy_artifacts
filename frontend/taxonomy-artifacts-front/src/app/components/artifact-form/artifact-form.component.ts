@@ -24,7 +24,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 
 import { CategoryService } from '../../services/category.service';
-import { Filo, Clase, Orden, Familia, Genero, Especie } from '../../models/category';
+import { Phylum, TaxonomicClass, Order, Family, Genus, Species } from '../../models/category';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 
@@ -56,20 +56,20 @@ export class ArtifactFormComponent implements OnInit {
   users: User[] = [];
 
   // lists for each taxonomy level
-  phyla: Filo[] = [];
-  classes: Clase[] = [];
-  orders: Orden[] = [];
-  families: Familia[] = [];
-  genera: Genero[] = [];
-  species: Especie[] = [];
+  phyla: Phylum[] = [];
+  classes: TaxonomicClass[] = [];
+  orders: Order[] = [];
+  families: Family[] = [];
+  genera: Genus[] = [];
+  species: Species[] = [];
 
   // current selection at each level
-  selectedPhylum?: Filo;
-  selectedClass?: Clase;
-  selectedOrder?: Orden;
-  selectedFamily?: Familia;
-  selectedGenus?: Genero;
-  selectedSpecies?: Especie;
+  selectedPhylum?: Phylum;
+  selectedClass?: TaxonomicClass;
+  selectedOrder?: Order;
+  selectedFamily?: Family;
+  selectedGenus?: Genus;
+  selectedSpecies?: Species;
 
   loading = false;
   editMode = false;
@@ -84,15 +84,15 @@ export class ArtifactFormComponent implements OnInit {
 
     this.form = this.fb.group({
 
-      nombre: ['', Validators.required],
+      name: ['', Validators.required],
 
-      descripcion: [''],
+      description: [''],
 
-      id_usuario: ['', Validators.required],
+      id_user: ['', Validators.required],
 
-      url_imagen: [''],
+      image_url: [''],
 
-      activo: [true]
+      active: [true]
 
     });
 
@@ -104,7 +104,7 @@ export class ArtifactFormComponent implements OnInit {
 
       // in edit mode a species is already assigned; it is kept
       // even if the user doesn't repeat the taxonomy walkthrough
-      this.selectedSpecies = { id_especie: data.id_especie, nombre: '' };
+      this.selectedSpecies = { id_species: data.id_species, name: '' };
 
     }
 
@@ -151,7 +151,7 @@ export class ArtifactFormComponent implements OnInit {
 
   }
 
-  selectPhylum(phylum: Filo) {
+  selectPhylum(phylum: Phylum) {
 
     this.selectedPhylum = phylum;
 
@@ -169,7 +169,7 @@ export class ArtifactFormComponent implements OnInit {
 
     this.loading = true;
 
-    this.categoryService.listClasses(phylum.id_filo).subscribe({
+    this.categoryService.listClasses(phylum.id_phylum).subscribe({
 
       next: (data) => {
         this.classes = data;
@@ -184,7 +184,7 @@ export class ArtifactFormComponent implements OnInit {
 
   }
 
-  selectClass(taxClass: Clase) {
+  selectClass(taxClass: TaxonomicClass) {
 
     this.selectedClass = taxClass;
 
@@ -199,7 +199,7 @@ export class ArtifactFormComponent implements OnInit {
 
     this.loading = true;
 
-    this.categoryService.listOrders(taxClass.id_clase).subscribe({
+    this.categoryService.listOrders(taxClass.id_class).subscribe({
 
       next: (data) => {
         this.orders = data;
@@ -214,7 +214,7 @@ export class ArtifactFormComponent implements OnInit {
 
   }
 
-  selectOrder(order: Orden) {
+  selectOrder(order: Order) {
 
     this.selectedOrder = order;
 
@@ -227,7 +227,7 @@ export class ArtifactFormComponent implements OnInit {
 
     this.loading = true;
 
-    this.categoryService.listFamilies(order.id_orden).subscribe({
+    this.categoryService.listFamilies(order.id_order).subscribe({
 
       next: (data) => {
         this.families = data;
@@ -242,7 +242,7 @@ export class ArtifactFormComponent implements OnInit {
 
   }
 
-  selectFamily(family: Familia) {
+  selectFamily(family: Family) {
 
     this.selectedFamily = family;
 
@@ -253,7 +253,7 @@ export class ArtifactFormComponent implements OnInit {
 
     this.loading = true;
 
-    this.categoryService.listGenera(family.id_familia).subscribe({
+    this.categoryService.listGenera(family.id_family).subscribe({
 
       next: (data) => {
         this.genera = data;
@@ -268,7 +268,7 @@ export class ArtifactFormComponent implements OnInit {
 
   }
 
-  selectGenus(genus: Genero) {
+  selectGenus(genus: Genus) {
 
     this.selectedGenus = genus;
 
@@ -277,7 +277,7 @@ export class ArtifactFormComponent implements OnInit {
 
     this.loading = true;
 
-    this.categoryService.listSpecies(genus.id_genero).subscribe({
+    this.categoryService.listSpecies(genus.id_genus).subscribe({
 
       next: (data) => {
         this.species = data;
@@ -292,7 +292,7 @@ export class ArtifactFormComponent implements OnInit {
 
   }
 
-  selectSpecies(species: Especie) {
+  selectSpecies(species: Species) {
 
     this.selectedSpecies = species;
 
@@ -310,7 +310,7 @@ export class ArtifactFormComponent implements OnInit {
 
     const result = {
       ...this.form.value,
-      id_especie: this.selectedSpecies.id_especie
+      id_species: this.selectedSpecies.id_species
     };
 
     this.dialogRef.close(result);

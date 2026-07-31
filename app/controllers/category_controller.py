@@ -12,21 +12,21 @@ def get_phyla():
     return list_phyla()
 
 
-def get_classes(id_filo):
-    return list_classes(id_filo)
+def get_classes(id_phylum):
+    return list_classes(id_phylum)
 
 
-def get_orders(id_clase):
-    return list_orders(id_clase)
+def get_orders(id_class):
+    return list_orders(id_class)
 
 
-def get_families(id_orden):
-    return list_families(id_orden)
+def get_families(id_order):
+    return list_families(id_order)
 
 
-def get_genera(id_familia):
-    return list_genera(id_familia)
+def get_genera(id_family):
+    return list_genera(id_family)
 
 
-def get_species(id_genero):
-    return list_species(id_genero)
+def get_species(id_genus):
+    return list_species(id_genus)

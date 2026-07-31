@@ -6,7 +6,7 @@ def list_users():
     try:
         response = (
             supabase
-            .table("usuario")
+            .table("users")
             .select("*")
             .execute()
         )
@@ -20,13 +20,13 @@ def list_users():
         )
 
 
-def get_user(id_usuario):
+def get_user(id_user):
     try:
         response = (
             supabase
-            .table("usuario")
+            .table("users")
             .select("*")
-            .eq("id_usuario", id_usuario)
+            .eq("id_user", id_user)
             .execute()
         )
 
@@ -53,9 +53,9 @@ def create_user(data):
         # Check whether the email is already in use
         email = (
             supabase
-            .table("usuario")
-            .select("correo")
-            .eq("correo", data["correo"])
+            .table("users")
+            .select("email")
+            .eq("email", data["email"])
             .execute()
         )
 
@@ -67,7 +67,7 @@ def create_user(data):
 
         response = (
             supabase
-            .table("usuario")
+            .table("users")
             .insert(data)
             .execute()
         )
@@ -84,14 +84,14 @@ def create_user(data):
         )
 
 
-def update_user(id_usuario, data):
+def update_user(id_user, data):
     try:
         # Check that the user exists
         user = (
             supabase
-            .table("usuario")
-            .select("id_usuario")
-            .eq("id_usuario", id_usuario)
+            .table("users")
+            .select("id_user")
+            .eq("id_user", id_user)
             .execute()
         )
 
@@ -103,9 +103,9 @@ def update_user(id_usuario, data):
 
         response = (
             supabase
-            .table("usuario")
+            .table("users")
             .update(data)
-            .eq("id_usuario", id_usuario)
+            .eq("id_user", id_user)
             .execute()
         )
 
@@ -121,14 +121,14 @@ def update_user(id_usuario, data):
         )
 
 
-def delete_user(id_usuario):
+def delete_user(id_user):
     try:
         # Check that the user exists
         user = (
             supabase
-            .table("usuario")
-            .select("id_usuario")
-            .eq("id_usuario", id_usuario)
+            .table("users")
+            .select("id_user")
+            .eq("id_user", id_user)
             .execute()
         )
 
@@ -140,9 +140,9 @@ def delete_user(id_usuario):
 
         response = (
             supabase
-            .table("usuario")
+            .table("users")
             .delete()
-            .eq("id_usuario", id_usuario)
+            .eq("id_user", id_user)
             .execute()
         )
 

@@ -6,7 +6,7 @@ def list_artifacts():
     try:
         response = (
             supabase
-            .table("artefacto")
+            .table("artifact")
             .select("*")
             .execute()
         )
@@ -20,13 +20,13 @@ def list_artifacts():
         )
 
 
-def get_artifact(id_artefacto):
+def get_artifact(id_artifact):
     try:
         response = (
             supabase
-            .table("artefacto")
+            .table("artifact")
             .select("*")
-            .eq("id_artefacto", id_artefacto)
+            .eq("id_artifact", id_artifact)
             .execute()
         )
 
@@ -52,7 +52,7 @@ def create_artifact(data):
     try:
         response = (
             supabase
-            .table("artefacto")
+            .table("artifact")
             .insert(data)
             .execute()
         )
@@ -66,13 +66,13 @@ def create_artifact(data):
         )
 
 
-def update_artifact(id_artefacto, data):
+def update_artifact(id_artifact, data):
     try:
         response = (
             supabase
-            .table("artefacto")
+            .table("artifact")
             .update(data)
-            .eq("id_artefacto", id_artefacto)
+            .eq("id_artifact", id_artifact)
             .execute()
         )
 
@@ -85,13 +85,13 @@ def update_artifact(id_artefacto, data):
         )
 
 
-def delete_artifact(id_artefacto):
+def delete_artifact(id_artifact):
     try:
         response = (
             supabase
-            .table("artefacto")
+            .table("artifact")
             .delete()
-            .eq("id_artefacto", id_artefacto)
+            .eq("id_artifact", id_artifact)
             .execute()
         )
 

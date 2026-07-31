@@ -2,16 +2,12 @@ from fastapi import HTTPException
 from app.database.connection import supabase
 
 
-# NOTE: "filo", "clase", "orden", "familia", "genero" and "especie" are the
-# literal table/column names in Supabase (kept in Spanish on purpose) —
-# do not rename them.
-
 def list_phyla():
     try:
         response = (
             supabase
-            .table("filo")
-            .select("id_filo, nombre, etiqueta_publica, descripcion_publica")
+            .table("phylum")
+            .select("id_phylum, name, public_label, public_description")
             .execute()
         )
         return response.data
@@ -19,13 +15,13 @@ def list_phyla():
         raise HTTPException(status_code=500, detail="Error listing Phyla.")
 
 
-def list_classes(id_filo: int):
+def list_classes(id_phylum: int):
     try:
         response = (
             supabase
-            .table("clase")
-            .select("id_clase, nombre")
-            .eq("id_filo", id_filo)
+            .table("class")
+            .select("id_class, name")
+            .eq("id_phylum", id_phylum)
             .execute()
         )
         return response.data
@@ -33,13 +29,13 @@ def list_classes(id_filo: int):
         raise HTTPException(status_code=500, detail="Error listing Classes.")
 
 
-def list_orders(id_clase: int):
+def list_orders(id_class: int):
     try:
         response = (
             supabase
-            .table("orden")
-            .select("id_orden, nombre")
-            .eq("id_clase", id_clase)
+            .table("orders")
+            .select("id_order, name")
+            .eq("id_class", id_class)
             .execute()
         )
         return response.data
@@ -47,13 +43,13 @@ def list_orders(id_clase: int):
         raise HTTPException(status_code=500, detail="Error listing Orders.")
 
 
-def list_families(id_orden: int):
+def list_families(id_order: int):
     try:
         response = (
             supabase
-            .table("familia")
-            .select("id_familia, nombre")
-            .eq("id_orden", id_orden)
+            .table("family")
+            .select("id_family, name")
+            .eq("id_order", id_order)
             .execute()
         )
         return response.data
@@ -61,13 +57,13 @@ def list_families(id_orden: int):
         raise HTTPException(status_code=500, detail="Error listing Families.")
 
 
-def list_genera(id_familia: int):
+def list_genera(id_family: int):
     try:
         response = (
             supabase
-            .table("genero")
-            .select("id_genero, nombre")
-            .eq("id_familia", id_familia)
+            .table("genus")
+            .select("id_genus, name")
+            .eq("id_family", id_family)
             .execute()
         )
         return response.data
@@ -75,13 +71,13 @@ def list_genera(id_familia: int):
         raise HTTPException(status_code=500, detail="Error listing Genera.")
 
 
-def list_species(id_genero: int):
+def list_species(id_genus: int):
     try:
         response = (
             supabase
-            .table("especie")
-            .select("id_especie, nombre")
-            .eq("id_genero", id_genero)
+            .table("species")
+            .select("id_species, name")
+            .eq("id_genus", id_genus)
             .execute()
         )
         return response.data

@@ -1,54 +1,51 @@
-// NOTE: "Filo", "Clase", "Orden", "Familia", "Genero" and "Especie" match the
-// database table names in Supabase (kept in Spanish on purpose) — do not rename them.
+export interface Phylum {
 
-export interface Filo {
+  id_phylum: number;
 
-  id_filo: number;
+  name: string;
 
-  nombre: string;
+  public_label?: string;
 
-  etiqueta_publica?: string;
-
-  descripcion_publica?: string;
+  public_description?: string;
 
 }
 
-export interface Clase {
+export interface TaxonomicClass {
 
-  id_clase: number;
+  id_class: number;
 
-  nombre: string;
-
-}
-
-export interface Orden {
-
-  id_orden: number;
-
-  nombre: string;
+  name: string;
 
 }
 
-export interface Familia {
+export interface Order {
 
-  id_familia: number;
+  id_order: number;
 
-  nombre: string;
-
-}
-
-export interface Genero {
-
-  id_genero: number;
-
-  nombre: string;
+  name: string;
 
 }
 
-export interface Especie {
+export interface Family {
 
-  id_especie: number;
+  id_family: number;
 
-  nombre: string;
+  name: string;
+
+}
+
+export interface Genus {
+
+  id_genus: number;
+
+  name: string;
+
+}
+
+export interface Species {
+
+  id_species: number;
+
+  name: string;
 
 }

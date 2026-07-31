@@ -1,0 +1,6 @@
+id_phylum,name,public_label,public_description
+2,Artefactos Físicos,Objeto físico,"Algo que puedes tocar: herramientas, muebles, instrumentos"
+3,Artefactos Informacionales-Simbólicos,Contenido digital,"Videojuegos, tipografías, sistemas de notación"
+4,Artefactos Físico-Informacionales,Dispositivo electrónico,"Computadoras, celulares, dispositivos inteligentes"
+5,Artefactos Biológico-Biotecnológicos,Organismo o ser vivo,"Razas de animales, cultivos, organismos modificados"
+6,Sustancias Técnicas,Sustancia o material,"Químicos, fertilizantes, colorantes"

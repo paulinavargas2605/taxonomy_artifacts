@@ -1,0 +1,43 @@
+id_class,name,id_phylum
+2,Herramientas y Utensilios,2
+5,Máquinas y Sistemas Mecánicos,2
+6,"Recipientes, Contenedores y Conductos",2
+7,Textiles y Productos Flexibles,2
+8,Vehículos y Dispositivos de Movilidad,2
+9,Dispositivos Energéticos y de Potencia,2
+10,Estructuras y Construcciones Estáticas,2
+11,Imágenes Fijas,3
+12,Objetos Audiovisuales,3
+13,Objetos Sonoros,3
+14,Sistemas Interactivos Digitales,3
+15,Textos Impresos,3
+16,Vehículos Inteligentes y Autónomos,4
+17,Hogar y Edificios Inteligentes,4
+18,Sistemas Ciberfísicos Industriales,4
+19,Dispositivos Médicos Inteligentes,4
+20,Dispositivos Personales Inteligentes,4
+21,Electrodomésticos Inteligentes,4
+22,Equipos Deportivos Inteligentes,4
+23,Instrumentos Musicales Inteligentes,4
+24,Infraestructura Urbana Inteligente,4
+25,Cultivos Agrícolas Modificados,5
+26,Animales Modificados O Seleccionados,5
+27,Microorganismos Industriales,5
+28,Sistemas Celulares de Producción,5
+29,Órganos y Tejidos Bioingenierizados,5
+30,Biomateriales y Biopolímeros Funcionales,5
+31,Químicamente Funcionales,6
+32,Físicamente Funcionales,6
+33,Térmicamente Funcionales,6
+34,Energéticamente Funcionales,6
+35,Farmacológicamente Funcionales,6
+36,Instrumentos Ópticos,2
+37,Instrumentos Acústicos,2
+38,Mobiliario y Equipamiento,2
+39,Tipografías y Sistemas de Notación,3
+40,Infraestructura de Redes y Computación,4
+41,Interfaces Neuronales y Neuroprótesis,4
+42,Sistemas Biológicos Sintéticos,5
+43,Organismos Domesticados (Selección Dirigida),5
+44,Agroquímicamente Funcionales,6
+45,Ópticamente Funcionales,6

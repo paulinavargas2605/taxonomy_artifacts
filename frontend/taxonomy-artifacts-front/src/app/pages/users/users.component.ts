@@ -119,7 +119,7 @@ export class UsersComponent implements OnInit{
       if (!result) return;
 
       this.userService.update(
-        user.id_usuario!,
+        user.id_user!,
         result
       ).subscribe({
 
@@ -157,9 +157,9 @@ export class UsersComponent implements OnInit{
 
   delete(user: User) {
 
-    if (!confirm(`Delete ${user.nombre_usuario}?`)) return;
+    if (!confirm(`Delete ${user.username}?`)) return;
 
-    this.userService.delete(user.id_usuario!).subscribe({
+    this.userService.delete(user.id_user!).subscribe({
 
       next: () => {
 

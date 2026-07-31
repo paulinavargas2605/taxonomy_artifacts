@@ -20,13 +20,13 @@
             <mat-card
                 *ngFor="let phylum of phyla"
                 class="card"
-                [class.selected]="selectedPhylum?.id_filo === phylum.id_filo"
+                [class.selected]="selectedPhylum?.id_phylum === phylum.id_phylum"
                 (click)="selectPhylum(phylum)">
 
-                <mat-card-title>{{ phylum.etiqueta_publica || phylum.nombre }}</mat-card-title>
+                <mat-card-title>{{ phylum.public_label || phylum.name }}</mat-card-title>
 
-                <mat-card-content *ngIf="phylum.descripcion_publica">
-                    {{ phylum.descripcion_publica }}
+                <mat-card-content *ngIf="phylum.public_description">
+                    {{ phylum.public_description }}
                 </mat-card-content>
 
             </mat-card>
@@ -54,10 +54,10 @@
             <mat-card
                 *ngFor="let taxClass of classes"
                 class="card"
-                [class.selected]="selectedClass?.id_clase === taxClass.id_clase"
+                [class.selected]="selectedClass?.id_class === taxClass.id_class"
                 (click)="selectClass(taxClass)">
 
-                <mat-card-title>{{ taxClass.nombre }}</mat-card-title>
+                <mat-card-title>{{ taxClass.name }}</mat-card-title>
 
             </mat-card>
 
@@ -84,10 +84,10 @@
             <mat-card
                 *ngFor="let order of orders"
                 class="card"
-                [class.selected]="selectedOrder?.id_orden === order.id_orden"
+                [class.selected]="selectedOrder?.id_order === order.id_order"
                 (click)="selectOrder(order)">
 
-                <mat-card-title>{{ order.nombre }}</mat-card-title>
+                <mat-card-title>{{ order.name }}</mat-card-title>
 
             </mat-card>
 
@@ -114,10 +114,10 @@
             <mat-card
                 *ngFor="let family of families"
                 class="card"
-                [class.selected]="selectedFamily?.id_familia === family.id_familia"
+                [class.selected]="selectedFamily?.id_family === family.id_family"
                 (click)="selectFamily(family)">
 
-                <mat-card-title>{{ family.nombre }}</mat-card-title>
+                <mat-card-title>{{ family.name }}</mat-card-title>
 
             </mat-card>
 
@@ -144,10 +144,10 @@
             <mat-card
                 *ngFor="let genus of genera"
                 class="card"
-                [class.selected]="selectedGenus?.id_genero === genus.id_genero"
+                [class.selected]="selectedGenus?.id_genus === genus.id_genus"
                 (click)="selectGenus(genus)">
 
-                <mat-card-title>{{ genus.nombre }}</mat-card-title>
+                <mat-card-title>{{ genus.name }}</mat-card-title>
 
             </mat-card>
 
@@ -174,10 +174,10 @@
             <mat-card
                 *ngFor="let species of species"
                 class="card"
-                [class.selected]="selectedSpecies?.id_especie === species.id_especie"
+                [class.selected]="selectedSpecies?.id_species === species.id_species"
                 (click)="selectSpecies(species)">
 
-                <mat-card-title>{{ species.nombre }}</mat-card-title>
+                <mat-card-title>{{ species.name }}</mat-card-title>
 
             </mat-card>
 
@@ -203,7 +203,7 @@
 
                 <mat-label>Name</mat-label>
 
-                <input matInput formControlName="nombre">
+                <input matInput formControlName="name">
 
             </mat-form-field>
 
@@ -211,7 +211,7 @@
 
                 <mat-label>Description</mat-label>
 
-                <textarea matInput formControlName="descripcion" rows="3"></textarea>
+                <textarea matInput formControlName="description" rows="3"></textarea>
 
             </mat-form-field>
 
@@ -219,13 +219,13 @@
 
                 <mat-label>User</mat-label>
 
-                <mat-select formControlName="id_usuario">
+                <mat-select formControlName="id_user">
 
                     <mat-option
                         *ngFor="let user of users"
-                        [value]="user.id_usuario">
+                        [value]="user.id_user">
 
-                        {{ user.nombre_usuario }}
+                        {{ user.username }}
 
                     </mat-option>
 
@@ -237,11 +237,11 @@
 
                 <mat-label>Image URL</mat-label>
 
-                <input matInput formControlName="url_imagen">
+                <input matInput formControlName="image_url">
 
             </mat-form-field>
 
-            <mat-slide-toggle formControlName="activo">Active</mat-slide-toggle>
+            <mat-slide-toggle formControlName="active">Active</mat-slide-toggle>
 
         </form>
 

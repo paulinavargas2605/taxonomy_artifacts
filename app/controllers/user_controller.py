@@ -11,17 +11,17 @@ def get_all_users():
     return list_users()
 
 
-def get_one_user(id_usuario):
-    return get_user(id_usuario)
+def get_one_user(id_user):
+    return get_user(id_user)
 
 
 def register_user(data):
     return create_user(data)
 
 
-def modify_user(id_usuario, data):
-    return update_user(id_usuario, data)
+def modify_user(id_user, data):
+    return update_user(id_user, data)
 
 
-def remove_user(id_usuario):
-    return delete_user(id_usuario)
+def remove_user(id_user):
+    return delete_user(id_user)

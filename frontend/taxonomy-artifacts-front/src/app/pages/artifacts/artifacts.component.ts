@@ -38,9 +38,9 @@ export class ArtifactsComponent implements OnInit {
   ];
 
   constructor(
-    private artifactService: ArtifactService,
-    private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private readonly artifactService: ArtifactService,
+    private readonly dialog: MatDialog,
+    private readonly snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -130,7 +130,7 @@ export class ArtifactsComponent implements OnInit {
       if (!result) return;
 
       this.artifactService.update(
-        artifact.id_artefacto!,
+        artifact.id_artifact!,
         result
       ).subscribe({
 
@@ -168,11 +168,11 @@ export class ArtifactsComponent implements OnInit {
 
   delete(artifact: Artifact) {
 
-    if (!confirm(`Delete "${artifact.nombre}"?`))
+    if (!confirm(`Delete "${artifact.name}"?`))
       return;
 
     this.artifactService.delete(
-      artifact.id_artefacto!
+      artifact.id_artifact!
     ).subscribe({
 
       next: () => {

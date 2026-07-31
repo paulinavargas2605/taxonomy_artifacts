@@ -1,17 +1,15 @@
-// NOTE: field names below match the JSON contract with the backend / database
-// (kept in Spanish on purpose) — do not rename them.
 export interface Artifact {
 
-  id_artefacto?: number;
+  id_artifact?: number;
 
-  nombre: string;
+  name: string;
 
-  id_usuario: number;
+  id_user: number;
 
-  id_especie: number;
+  id_species: number;
 
-  url_imagen: string;
+  image_url: string;
 
-  activo: boolean;
+  active: boolean;
 
 }

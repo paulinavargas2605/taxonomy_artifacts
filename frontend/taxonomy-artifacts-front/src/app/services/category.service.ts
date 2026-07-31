@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Filo, Clase, Orden, Familia, Genero, Especie } from '../models/category';
+import { Phylum, TaxonomicClass, Order, Family, Genus, Species } from '../models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -13,48 +13,48 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  listPhyla(): Observable<Filo[]> {
+  listPhyla(): Observable<Phylum[]> {
 
-    return this.http.get<Filo[]>(`${this.api}/filos`);
+    return this.http.get<Phylum[]>(`${this.api}/phyla`);
 
   }
 
-  listClasses(idFilo: number): Observable<Clase[]> {
+  listClasses(idPhylum: number): Observable<TaxonomicClass[]> {
 
-    return this.http.get<Clase[]>(`${this.api}/clases`, {
-      params: { id_filo: idFilo }
+    return this.http.get<TaxonomicClass[]>(`${this.api}/classes`, {
+      params: { id_phylum: idPhylum }
     });
 
   }
 
-  listOrders(idClase: number): Observable<Orden[]> {
+  listOrders(idClass: number): Observable<Order[]> {
 
-    return this.http.get<Orden[]>(`${this.api}/ordenes`, {
-      params: { id_clase: idClase }
+    return this.http.get<Order[]>(`${this.api}/orders`, {
+      params: { id_class: idClass }
     });
 
   }
 
-  listFamilies(idOrden: number): Observable<Familia[]> {
+  listFamilies(idOrder: number): Observable<Family[]> {
 
-    return this.http.get<Familia[]>(`${this.api}/familias`, {
-      params: { id_orden: idOrden }
+    return this.http.get<Family[]>(`${this.api}/families`, {
+      params: { id_order: idOrder }
     });
 
   }
 
-  listGenera(idFamilia: number): Observable<Genero[]> {
+  listGenera(idFamily: number): Observable<Genus[]> {
 
-    return this.http.get<Genero[]>(`${this.api}/generos`, {
-      params: { id_familia: idFamilia }
+    return this.http.get<Genus[]>(`${this.api}/genera`, {
+      params: { id_family: idFamily }
     });
 
   }
 
-  listSpecies(idGenero: number): Observable<Especie[]> {
+  listSpecies(idGenus: number): Observable<Species[]> {
 
-    return this.http.get<Especie[]>(`${this.api}/especies`, {
-      params: { id_genero: idGenero }
+    return this.http.get<Species[]>(`${this.api}/species`, {
+      params: { id_genus: idGenus }
     });
 
   }

@@ -11,34 +11,31 @@ from app.controllers.category_controller import (
 router = APIRouter(prefix="/categories", tags=["Categories"])
 
 
-# NOTE: "filos", "clases", "ordenes", "familias", "generos" and "especies"
-# match the database table names in Supabase (kept in Spanish on purpose).
-
-@router.get("/filos")
+@router.get("/phyla")
 def phyla():
     return get_phyla()
 
 
-@router.get("/clases")
-def classes(id_filo: int):
-    return get_classes(id_filo)
+@router.get("/classes")
+def classes(id_phylum: int):
+    return get_classes(id_phylum)
 
 
-@router.get("/ordenes")
-def orders(id_clase: int):
-    return get_orders(id_clase)
+@router.get("/orders")
+def orders(id_class: int):
+    return get_orders(id_class)
 
 
-@router.get("/familias")
-def families(id_orden: int):
-    return get_families(id_orden)
+@router.get("/families")
+def families(id_order: int):
+    return get_families(id_order)
 
 
-@router.get("/generos")
-def genera(id_familia: int):
-    return get_genera(id_familia)
+@router.get("/genera")
+def genera(id_family: int):
+    return get_genera(id_family)
 
 
-@router.get("/especies")
-def species(id_genero: int):
-    return get_species(id_genero)
+@router.get("/species")
+def species(id_genus: int):
+    return get_species(id_genus)

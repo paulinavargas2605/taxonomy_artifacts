@@ -1,0 +1,456 @@
+id_family,name,id_order
+1,Demolición y Construcción,1
+2,Conformado Metálico,1
+3,Ajuste y Remachado,1
+4,Impacto de Precisión,1
+5,Cuchillas Rectas Multiuso,2
+6,Hachas y Machetes,2
+7,Sierras Dentadas Manuales,2
+8,Perforación Puntual,2
+9,Atornillado / Desatornillado,3
+10,Ajuste de Pernos / Tuercas,3
+11,Extracción y Palanca,3
+12,Sujeción y Torsión,3
+13,Limas y Escofinas,4
+14,Lijas y Abrasivos Flexibles,4
+15,Piedras de Afilar,4
+16,Cepillos Metálicos y Rascadores,4
+17,Longitud y Ángulos,5
+18,Nivelación y Verticalidad,5
+19,Calibración de Precisión,5
+20,Marcado y Trazado Gráfico,5
+21,Utensilios de Mezcla,6
+22,Utensilios de Servir,6
+23,Utensilios de Amasado,6
+24,Cuchillos de Chef,2
+25,Cuchillos Especializados,2
+26,Utensilios de Pelado,2
+27,Medición de Volumen,5
+28,Medición de Temperatura,5
+29,Apertura de Envases,3
+30,Limpieza Doméstica,4
+31,Herramientas de Barrido,4
+32,Ralladores,7
+33,Mandolinas,7
+34,Cortador Espiral,7
+35,Coladores y Tamices,8
+36,Prensas Manuales,8
+37,Cafeteras Manuales,8
+38,Molinillos,9
+39,Dispensadores,9
+40,Porcionadores,9
+41,Medición de Masa,5
+42,Reductores de Velocidad/Torque,10
+43,Variadores y Multiplicadores,10
+44,Distribución de Potencia,10
+45,Embragues y Acoplamientos,10
+46,Motores Alternativos,11
+47,Bombas de Desplazamiento Positivo,11
+48,Prensas Mecánicas,11
+49,Actuadores Lineales,11
+50,Martillos Neumáticos/Hidráulicos,12
+51,Prensas de Estampado En Frío,12
+52,Trituradores de Impacto,12
+53,Clavadoras y Remachadoras Automáticas,12
+54,Bombas Hidráulicas,13
+55,Compresores de Aire,13
+56,Sopladores y Ventiladores,13
+57,Turbocompresores,13
+58,Refrigeración Doméstica,13
+59,Máquinas-Herramienta Cnc,14
+60,Robots Industriales Articulados,14
+61,Impresoras 3D,14
+62,Sistemas Pick-And-Place,14
+63,Lavado Doméstico,14
+64,Envases Rígidos,15
+65,Envases Flexibles,15
+66,Silos y Tolvas,15
+67,Depósitos a Granel,15
+68,Cilindros de Gas Comprimido,16
+69,Calderas de Vapor,16
+70,Recipientes Criogénicos Presurizados,16
+71,Aerosoles y Pulverizadores,16
+72,Termos de Vacío,17
+73,Contenedores Refrigerados,17
+74,Tanques de Nitrógeno Líquido,17
+75,Cajas Cadena Frío,17
+76,Tuberías de Agua Potable,18
+77,Oleoductos y Gasoductos,18
+78,Ductos Hvac,18
+79,Conducciones Sanitarias,18
+80,Canales de Riego,19
+81,Acequias y Cunetas,19
+82,Acueductos Históricos,19
+83,Desagües Pluviales,19
+84,Cacerolas y Ollas,20
+85,Sartenes,20
+86,Utensilios Horno,20
+87,Recipientes Herméticos,21
+88,Botellas Reutilizables,21
+89,Vestimenta Cotidiana,22
+90,Textiles Técnicos,22
+91,Textiles para Hogar,22
+92,Ropa Deportiva,23
+93,Ropa Interior,23
+94,Moda de Punto,23
+95,Ropa Desechable Médica,24
+96,Geotextiles,24
+97,Aislantes Fieltro,24
+98,Ropa Impermeable,25
+99,Membranas Arquitectónicas,25
+100,Barreras Protección Química,25
+101,Prendas de Cuero,26
+102,Accesorios Cuero,26
+103,Artesanía Vegetal,26
+104,Ciclorrodados,27
+105,Vehículos Ligeros de Pasajeros,27
+106,Vehículos de Carga y Servicio,27
+107,Vehículos Todoterreno / Agroindustriales,27
+108,Trenes de Pasajeros Interurbanos,28
+109,Trenes de Carga,28
+110,Tranvías y Metros Urbanos,28
+111,Monorraíles y People-Movers,28
+112,Buques de Carga,29
+113,Embarcaciones de Pesca,29
+114,Embarcaciones de Recreo,29
+115,Buques Militares,29
+116,Aeronaves Comerciales de Ala Fija,30
+117,Aeronaves Ligeras Privadas,30
+118,Aeronaves de Alas Giratorias,30
+119,Planeadores y Uav,30
+120,Vehículos Lanzadores Espaciales,31
+121,Motores a Reacción Aeronáuticos,31
+122,Misiles Tácticos y Estratégicos,31
+123,Satélites Con Propulsión Eléctrica,31
+124,Baterías Recargables,32
+125,Pilas Primarias,32
+126,Supercondensadores,32
+127,Celdas de Combustible Reversibles,32
+128,Volantes de Inercia,33
+129,Resortes Helicoidales de Potencia,33
+130,Embalses Hidroeléctricos,33
+131,Aire Comprimido (Caes),33
+132,Paneles Solares Residenciales,34
+133,Granjas Solares,34
+134,Cargadores Solares Portátiles,34
+135,Generación Fotovoltaica Espacial,34
+136,Turbinas de Vapor,35
+137,Turbinas de Gas,35
+138,Motores Stirling,35
+139,Motores de Combustión Interna,35
+140,Motores Eléctricos Ca,36
+141,Motores Eléctricos Cc,36
+142,Generadores Eléctricos Síncronos,36
+143,Servomotores y Paso-A-Paso,36
+144,Edificios Habitacionales,37
+145,Naves Industriales,37
+146,Puentes Pórtico de Acero,37
+147,Marquesinas y Cubiertas Ligeras,37
+148,Muros de Carga y Cimientos,38
+149,Presas de Gravedad,38
+150,Monumentos y Obeliscos,38
+151,Columnatas Clásicas,38
+152,Puentes Colgantes,39
+153,Carpas y Toldos Tensados,39
+154,Cubiertas Tensomembrana,39
+155,Torres y Mástiles Cableados,39
+156,Cúpulas Geodésicas,40
+157,Torres Reticuladas,40
+158,Estructuras Espaciales 3D,40
+159,Marquesinas Modulares Reticuladas,40
+160,Viviendas Modulares,41
+161,Contenedores Adaptados,41
+162,Estructuras Temporales para Eventos,41
+163,Aulas y Clínicas Móviles,41
+164,Retrato,42
+165,Paisaje,42
+166,Abstracción,42
+167,Fotografía Artística,43
+168,Fotografía Documental,43
+169,Fotografía Científica,43
+170,Xilografía,44
+171,Aguafuerte,44
+172,Litografía,44
+173,Mapa Topográfico,45
+174,Mapa Náutico,45
+175,Mapa Temático,45
+176,Ilustración Digital,46
+177,Largometraje Ficción,47
+178,Documental,47
+179,Animación,47
+180,Película Hogareña,48
+181,Serie Tv,48
+182,Educativo,48
+183,Blockbuster,49
+184,Colección Clásica,49
+185,Serie Hd,49
+186,Streaming Film,50
+187,Clip Corto,50
+188,Mooc,50
+189,Música Popular,52
+190,Música Académica,52
+191,Audiolibro,52
+192,Cassette Musical,53
+193,Cinta Dat,53
+194,Carrete Carrete,53
+195,Álbum de Estudio,54
+196,Compilación,54
+197,Grabación Hi‑Res,54
+198,Mp3,55
+199,Flac,55
+200,Ogg,55
+201,Grabación Hi-Res,54
+202,Productividad,56
+203,Creatividad,56
+204,Desarrollo,56
+205,Comunicación,57
+206,Redes Sociales,57
+207,Utilidad,57
+208,E‑Commerce,58
+209,Medios,58
+210,Consola,59
+211,Pc,59
+212,Móvil,59
+213,E-Commerce,58
+214,Literatura,60
+215,Referencia,60
+216,Manual Técnico,60
+217,Periódico Diario,61
+218,Revista Científica,61
+219,Revista Popular,61
+220,Folleto Informativo,62
+221,Cartilla Académica,62
+222,Informe Institucional,62
+223,Cartel Publicitario,63
+224,Cartel Educativo,63
+225,Cartel Artístico,63
+226,Partitura Clásica,64
+227,Eléctrico,65
+228,Híbrido Enchufable,65
+229,Cuadricóptero,66
+230,Entrega Paquetería,66
+231,Amr Almacén,67
+232,Robot Pasillo,67
+233,Aprendizaje,68
+234,Zonificación,68
+235,Bombilla Led,69
+236,Tira Led,69
+237,Asistente Hogar,70
+238,Audio Hi‑Fi,70
+239,Brazo 6 Ejes,71
+240,Brazo Scara,71
+241,Control Discreto,72
+242,Edge Gateway,72
+243,Simulación Proceso,73
+244,Mantenimiento Predictivo,73
+245,Parche Cgm,74
+246,Implantable,74
+247,Ritmo Fisiológico,75
+248,Sincronización Inalámbrica,75
+249,Cirugía Mínimamente Invasiva,76
+250,Cirugía Ortopédica,76
+251,Computadora de Escritorio,77
+252,Portátil / Laptop,77
+253,Servidor Personal,77
+254,Mini Pc,77
+255,Tableta,78
+256,2‑En‑1 Convertible,78
+257,E‑Reader,78
+258,Teclado Inteligente,79
+259,Ratón Inteligente,79
+260,Stylus Digital,79
+261,Reloj Inteligente,80
+262,Pulsera Fitness,80
+263,Anillo Inteligente,80
+264,Gafas Inteligentes,80
+265,Auricular Vr,81
+266,Auricular Ar,81
+267,Auriculares Tws,82
+268,Cascos Supraaurales,82
+269,Altavoz Portátil,82
+270,Robot de Cocina,83
+271,Horno Inteligente,83
+272,Cafetera Conectada,83
+273,Robot Aspirador,84
+274,Robot Fregasuelos,84
+275,Lavavajillas Inteligente,84
+276,Plancha de Vapor Inteligente,85
+277,Armario Refrescador,85
+278,Sensor Running Footpod,86
+279,Sensor Ciclismo Potencia,86
+280,Sensor Natación,86
+281,Bicicleta Estática Inteligente,87
+282,Cinta de Correr Inteligente,87
+283,Máquina Remo Inteligente,87
+284,Casco Ciclismo Inteligente,88
+285,Bastón Trekking Gps,88
+286,Guitarra Midi Conectada,89
+287,Teclado Aprendizaje,89
+288,Batería Electrónica Conectada,89
+289,Controlador Dj,90
+290,Pad Percusión Midi,90
+291,Luminaria Led Conectada,91
+292,Poste Sensor Ambiental,91
+293,Contenedor Solar Compacto,92
+294,Papelera Sensor Nivel,92
+295,Semáforo Conectado,93
+296,Panel Informativo Digital,93
+297,Soja Tolerante a Glifosato,94
+298,Canola Tolerante a Glifosato,94
+299,Maíz Bt,95
+300,Algodón Bt,95
+301,Arroz Dorado Vitamina A,96
+302,Yuca Provitamina A,96
+303,Pez de Crecimiento Acelerado,97
+304,Mamífero Productor de Fármaco,97
+305,Roedor Modificado,98
+306,Pez Fluorescente,98
+307,Ovinos Clonados,99
+308,Bovinos de Élite,99
+309,Bacteria Recombinante,100
+310,Levadura Fermentación,100
+311,Bacteria Fijadora de Nitrógeno,101
+312,Pgpr,101
+313,Bacteria Degradadora,102
+314,Microalga Depuradora,102
+315,Células Cho,103
+316,Células Hek,103
+317,Células Sf9,104
+318,Células High Five,104
+319,Suspensión By‑2,105
+320,Células Zanahoria,105
+321,Piel Artificial,106
+322,Cartílago Implantable,106
+323,Hígado‑En‑Chip,107
+324,Corazón‑En‑Chip,107
+325,Tráquea Bioimpresa,108
+326,Hueso Bioimpreso,108
+327,Pla,109
+328,Pha,109
+329,Glucosa Enzimático,110
+330,Prueba Lateral Flujo,110
+331,Adhesivo Fibrina,111
+332,Adhesivo Cianoacrilato,111
+333,Tolerancia a Herbicidas,94
+334,Hígado-En-Chip,112
+335,Catalizador Heterogéneo,113
+336,Catalizador Homogéneo,113
+337,Biocatalizador,113
+338,Agente Oxidante,114
+339,Agente Reductor,114
+340,Agente Acilante,114
+341,Adhesivo Epoxi,115
+342,Adhesivo Anaeróbico,115
+343,Solvente Polar Aprótico,116
+344,Solvente No Polar,116
+345,Solvente Verde,116
+346,Resina Poliéster,117
+347,Resina Acrílica Uv,117
+348,Prepolímero Poliuretano,117
+349,Aceite Sintético,118
+350,Grasa de Litio,118
+351,Lubricante Seco,118
+352,Refrigerante Dieléctrico,119
+353,Refrigerante Automotriz,119
+354,Refrigerante Criogénico,119
+355,Pigmento Fotoluminiscente,120
+356,Pigmento Anticorrosivo,120
+357,Pigmento Termocrómico,120
+358,Gel de Sílice,121
+359,Carbón Activado,121
+360,Tamiz Molecular,121
+361,Bentonita Organo,122
+362,Sílice Pirogénica,122
+363,Polímero Espesante,122
+364,Aceite Térmico,123
+365,Sal Fundida,123
+366,Nanofluido,123
+367,Pcm Orgánico,124
+368,Pcm Inorgánico,124
+369,Pcm Eutéctico,124
+370,Halogenados,125
+371,Fosforados,125
+372,Intumescentes,125
+373,Aerogel Sílice,126
+374,Espuma Pir,126
+375,Lana Mineral,126
+376,Tellururo de Bismuto,127
+377,Skutterudita,127
+378,Half-Heusler,127
+379,Gasolina Sin Plomo,128
+380,Biodiésel,128
+381,Combustible de Aviación Sostenible,128
+382,Hidrógeno Verde,129
+383,Gas Natural Licuado,129
+384,Gas de Síntesis,129
+385,Pellets de Madera,130
+386,Carbón Antracita,130
+387,Biocarbón,130
+388,Lipf6 En Carbonato,131
+389,Electrolito Sólido,131
+390,Electrolito Supercapacitor,131
+391,Hidruro Metálico,132
+392,Amoníaco,132
+393,Portadores Líquidos Orgánicos (Lohc),132
+394,Β‑Lactámico,133
+395,Macrólido,133
+396,Glucopéptido,133
+397,Inhibidor Proteasa,134
+398,Arn Polimerasa,134
+399,Entrada Viral,134
+400,Aine,135
+401,Opioide,135
+402,Analgésico Selectivo Cox‑2,135
+403,Arn Mensajero,136
+404,Vector Viral,136
+405,Subunidad Proteica,136
+406,Vector Aav,137
+407,Vector Lentiviral,137
+408,Edición Ex Vivo,137
+409,Corrección Visual,138
+410,Magnificación y Observación,138
+411,Observación Astronómica,139
+412,Reflexión Cotidiana,139
+413,Análisis Espectral,140
+414,Control de Imagen,141
+415,Punteada,142
+416,Frotada,142
+417,Cuerda Percutida,142
+418,Viento-Madera,143
+419,Viento-Metal,143
+420,Percusión,144
+421,Percusión Afinada,145
+422,Asientos,146
+423,Descanso,146
+424,Superficies de Trabajo y Comedor,147
+425,Almacenamiento de Objetos,148
+426,Serif,149
+427,Sans-Serif,149
+428,Monoespaciada,149
+429,Notación Técnica,150
+430,Iconografía de Señalización,150
+431,Enrutamiento de Red,151
+432,Conmutación Local,151
+433,Hardware de Servidor,152
+434,Acceso Radioeléctrico,153
+435,Interfaz Cerebro-Computadora,154
+436,Prótesis Auditiva,155
+437,Prótesis Visual,155
+438,Circuitos Lógicos Genéticos,156
+439,Chasis de Célula Mínima,157
+440,Robots Biológicos,158
+441,Animales de Compañía,159
+442,Ganado,159
+443,Cultivares de Cereales,160
+444,Cepas de Fermentación,160
+445,Herbicida,161
+446,Insecticida,161
+447,Fungicida,161
+448,Fertilizante Nitrogenado,162
+449,Fertilizante Fosfatado,162
+450,Regulador de Crecimiento Vegetal,163
+451,Fósforo Luminiscente,164
+452,Colorante Fluorescente,164
+453,Cristal Líquido,165
+454,Fotocrómico,165
+455,Fotorresistente,166
