@@ -11,9 +11,9 @@
     <!-- Step 1: Phylum -->
     <mat-step [completed]="!!selectedPhylum">
 
-        <ng-template matStepLabel>Type</ng-template>
+        <ng-template matStepLabel>Phylum</ng-template>
 
-        <div class="step-description">What type of artifact is it?</div>
+        <div class="step-description">What phylum of artifact is it?</div>
 
         <div class="cards" *ngIf="!loading || phyla.length">
 
@@ -21,16 +21,11 @@
                 *ngFor="let phylum of phyla"
                 class="card"
                 [class.selected]="selectedPhylum?.id_phylum === phylum.id_phylum"
-                (click)="selectPhylum(phylum)">
+                (click)="selectPhylum(phylum)"> 
 
-                <mat-card-title>{{ phylum.public_label || phylum.name }}</mat-card-title>
-
-                <mat-card-content *ngIf="phylum.public_description">
-                    {{ phylum.public_description }}
-                </mat-card-content>
-
+                <mat-card-title>{{ phylum.name }}</mat-card-title>
             </mat-card>
-
+            
         </div>
 
         <mat-spinner *ngIf="loading && !phyla.length" diameter="30"></mat-spinner>
@@ -45,9 +40,9 @@
     <!-- Step 2: Class -->
     <mat-step [completed]="!!selectedClass">
 
-        <ng-template matStepLabel>Category</ng-template>
+        <ng-template matStepLabel>Class</ng-template>
 
-        <div class="step-description">Choose the category</div>
+        <div class="step-description">Choose the class</div>
 
         <div class="cards">
 
@@ -75,9 +70,9 @@
     <!-- Step 3: Order -->
     <mat-step [completed]="!!selectedOrder">
 
-        <ng-template matStepLabel>Group</ng-template>
+        <ng-template matStepLabel>Order</ng-template>
 
-        <div class="step-description">Choose the group</div>
+        <div class="step-description">Choose the order</div>
 
         <div class="cards">
 
@@ -105,9 +100,9 @@
     <!-- Step 4: Family -->
     <mat-step [completed]="!!selectedFamily">
 
-        <ng-template matStepLabel>Subgroup</ng-template>
+        <ng-template matStepLabel>Family</ng-template>
 
-        <div class="step-description">Choose the subgroup</div>
+        <div class="step-description">Choose the family</div>
 
         <div class="cards">
 
@@ -135,9 +130,9 @@
     <!-- Step 5: Genus -->
     <mat-step [completed]="!!selectedGenus">
 
-        <ng-template matStepLabel>Model</ng-template>
+        <ng-template matStepLabel>Genus</ng-template>
 
-        <div class="step-description">Choose the model</div>
+        <div class="step-description">Choose the genus</div>
 
         <div class="cards">
 

@@ -4,8 +4,6 @@ export interface Phylum {
 
   name: string;
 
-  public_label?: string;
-
   public_description?: string;
 
 }

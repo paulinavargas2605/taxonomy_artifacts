@@ -7,7 +7,7 @@ def list_phyla():
         response = (
             supabase
             .table("phylum")
-            .select("id_phylum, name, public_label, public_description")
+            .select("id_phylum, name, public_description")
             .execute()
         )
         return response.data
