@@ -83,3 +83,23 @@ def list_species(id_genus: int):
         return response.data
     except Exception:
         raise HTTPException(status_code=500, detail="Error listing Species.")
+
+
+def get_species_by_id(id_species: int):
+    try:
+        response = (
+            supabase
+            .table("species")
+            .select("id_species, name")
+            .eq("id_species", id_species)
+            .execute()
+        )
+
+        if not response.data:
+            raise HTTPException(status_code=404, detail="Species not found.")
+
+        return response.data[0]
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(status_code=500, detail="Error fetching the species.")

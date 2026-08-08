@@ -43,4 +43,16 @@ export class ArtifactService {
 
   }
 
+  uploadImage(file: File) {
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  return this.http.post<{ image_url: string }>(
+    `${this.api}/upload-image`,
+    formData
+  );
+
+}
+
 }

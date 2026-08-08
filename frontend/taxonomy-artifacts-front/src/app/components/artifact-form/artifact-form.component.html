@@ -6,7 +6,12 @@
 
 <mat-dialog-content>
 
-<mat-stepper orientation="horizontal" linear #stepper class="artifact-stepper">
+<mat-stepper
+    orientation="horizontal"
+    [linear]="!editMode"
+    [selectedIndex]="editMode ? 6 : 0"
+    #stepper
+    class="artifact-stepper">
 
     <!-- Step 1: Phylum -->
     <mat-step [completed]="!!selectedPhylum">
@@ -228,13 +233,22 @@
 
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <div class="current-species" *ngIf="editMode && selectedSpecies">
 
-                <mat-label>Image URL</mat-label>
+                Current classification: <strong>{{ selectedSpecies.name }}</strong>
+                <span class="hint">(click an earlier step above to change it)</span>
 
-                <input matInput formControlName="image_url">
+            </div>
 
-            </mat-form-field>
+            <div class="image-upload">
+
+                <input type="file" accept="image/*" (change)="onFileSelected($event)">
+
+                <mat-spinner *ngIf="uploading" diameter="24"></mat-spinner>
+
+                <img *ngIf="form.value.image_url" [src]="form.value.image_url" class="preview-image">
+
+            </div>
 
             <mat-slide-toggle formControlName="active">Active</mat-slide-toggle>
 

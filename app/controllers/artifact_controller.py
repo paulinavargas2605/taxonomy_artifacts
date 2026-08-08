@@ -3,9 +3,12 @@ from app.services.artifact_service import (
     get_artifact,
     create_artifact,
     update_artifact,
-    delete_artifact
+    delete_artifact,
+    upload_artifact_image
 )
 
+def upload_image(file_bytes, filename, content_type):
+    return upload_artifact_image(file_bytes, filename, content_type)
 
 def get_all_artifacts():
     return list_artifacts()

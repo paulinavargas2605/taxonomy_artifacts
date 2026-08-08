@@ -59,4 +59,10 @@ export class CategoryService {
 
   }
 
+  getSpecies(idSpecies: number): Observable<Species> {
+
+    return this.http.get<Species>(`${this.api}/species/${idSpecies}`);
+
+  }
+
 }

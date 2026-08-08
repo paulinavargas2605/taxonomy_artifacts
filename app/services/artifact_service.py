@@ -1,6 +1,9 @@
 from fastapi import HTTPException
 from app.database.connection import supabase
+import uuid
+import os
 
+BUCKET_NAME = "artifact-images"
 
 def list_artifacts():
     try:
@@ -101,4 +104,25 @@ def delete_artifact(id_artifact):
         raise HTTPException(
             status_code=500,
             detail="An error occurred while deleting the artifact."
+        )
+
+def upload_artifact_image(file_bytes: bytes, filename: str, content_type: str) -> str:
+    try:
+        ext = os.path.splitext(filename)[1] or ".jpg"
+        unique_name = f"{uuid.uuid4()}{ext}"
+
+        supabase.storage.from_(BUCKET_NAME).upload(
+            path=unique_name,
+            file=file_bytes,
+            file_options={"content-type": content_type}
+        )
+
+        public_url = supabase.storage.from_(BUCKET_NAME).get_public_url(unique_name)
+
+        return public_url
+    
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="An error occurred while uploading the image."
         )

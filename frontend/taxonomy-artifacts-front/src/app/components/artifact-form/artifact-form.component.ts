@@ -27,6 +27,7 @@ import { CategoryService } from '../../services/category.service';
 import { Phylum, TaxonomicClass, Order, Family, Genus, Species } from '../../models/category';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { ArtifactService } from '../../services/artifact.service';
 
 @Component({
   selector: 'app-artifact-form',
@@ -49,13 +50,10 @@ import { User } from '../../models/user';
 })
 export class ArtifactFormComponent implements OnInit {
 
-  // form with the artifact's general data (last step)
   form: FormGroup;
 
-  // users available for the select
   users: User[] = [];
 
-  // lists for each taxonomy level
   phyla: Phylum[] = [];
   classes: TaxonomicClass[] = [];
   orders: Order[] = [];
@@ -63,7 +61,6 @@ export class ArtifactFormComponent implements OnInit {
   genera: Genus[] = [];
   species: Species[] = [];
 
-  // current selection at each level
   selectedPhylum?: Phylum;
   selectedClass?: TaxonomicClass;
   selectedOrder?: Order;
@@ -74,26 +71,25 @@ export class ArtifactFormComponent implements OnInit {
   loading = false;
   editMode = false;
 
+  // image handling
+  selectedFile?: File;
+  uploading = false;
+
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
     private userService: UserService,
+    private artifactService: ArtifactService,
     private dialogRef: MatDialogRef<ArtifactFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
 
     this.form = this.fb.group({
-
       name: ['', Validators.required],
-
       description: [''],
-
       id_user: ['', Validators.required],
-
       image_url: [''],
-
       active: [true]
-
     });
 
     if (data) {
@@ -116,46 +112,39 @@ export class ArtifactFormComponent implements OnInit {
 
     this.loadUsers();
 
+    if (this.editMode && this.selectedSpecies) {
+
+      this.categoryService.getSpecies(this.selectedSpecies.id_species).subscribe({
+
+        next: (species) => {
+          this.selectedSpecies = species;
+        },
+
+        error: () => {}
+
+      });
+
+    }
+
   }
 
   loadUsers() {
-
     this.userService.list().subscribe({
-
-      next: (data) => {
-        this.users = data;
-      },
-
+      next: (data) => { this.users = data; },
       error: () => {}
-
     });
-
   }
 
   loadPhyla() {
-
     this.loading = true;
-
     this.categoryService.listPhyla().subscribe({
-
-      next: (data) => {
-        this.phyla = data;
-        this.loading = false;
-      },
-
-      error: () => {
-        this.loading = false;
-      }
-
+      next: (data) => { this.phyla = data; this.loading = false; },
+      error: () => { this.loading = false; }
     });
-
   }
 
   selectPhylum(phylum: Phylum) {
-
     this.selectedPhylum = phylum;
-
-    // clear everything that depended on the previous phylum
     this.selectedClass = undefined;
     this.selectedOrder = undefined;
     this.selectedFamily = undefined;
@@ -166,28 +155,15 @@ export class ArtifactFormComponent implements OnInit {
     this.families = [];
     this.genera = [];
     this.species = [];
-
     this.loading = true;
-
     this.categoryService.listClasses(phylum.id_phylum).subscribe({
-
-      next: (data) => {
-        this.classes = data;
-        this.loading = false;
-      },
-
-      error: () => {
-        this.loading = false;
-      }
-
+      next: (data) => { this.classes = data; this.loading = false; },
+      error: () => { this.loading = false; }
     });
-
   }
 
   selectClass(taxClass: TaxonomicClass) {
-
     this.selectedClass = taxClass;
-
     this.selectedOrder = undefined;
     this.selectedFamily = undefined;
     this.selectedGenus = undefined;
@@ -196,131 +172,101 @@ export class ArtifactFormComponent implements OnInit {
     this.families = [];
     this.genera = [];
     this.species = [];
-
     this.loading = true;
-
     this.categoryService.listOrders(taxClass.id_class).subscribe({
-
-      next: (data) => {
-        this.orders = data;
-        this.loading = false;
-      },
-
-      error: () => {
-        this.loading = false;
-      }
-
+      next: (data) => { this.orders = data; this.loading = false; },
+      error: () => { this.loading = false; }
     });
-
   }
 
   selectOrder(order: Order) {
-
     this.selectedOrder = order;
-
     this.selectedFamily = undefined;
     this.selectedGenus = undefined;
     this.selectedSpecies = undefined;
     this.families = [];
     this.genera = [];
     this.species = [];
-
     this.loading = true;
-
     this.categoryService.listFamilies(order.id_order).subscribe({
-
-      next: (data) => {
-        this.families = data;
-        this.loading = false;
-      },
-
-      error: () => {
-        this.loading = false;
-      }
-
+      next: (data) => { this.families = data; this.loading = false; },
+      error: () => { this.loading = false; }
     });
-
   }
 
   selectFamily(family: Family) {
-
     this.selectedFamily = family;
-
     this.selectedGenus = undefined;
     this.selectedSpecies = undefined;
     this.genera = [];
     this.species = [];
-
     this.loading = true;
-
     this.categoryService.listGenera(family.id_family).subscribe({
-
-      next: (data) => {
-        this.genera = data;
-        this.loading = false;
-      },
-
-      error: () => {
-        this.loading = false;
-      }
-
+      next: (data) => { this.genera = data; this.loading = false; },
+      error: () => { this.loading = false; }
     });
-
   }
 
   selectGenus(genus: Genus) {
-
     this.selectedGenus = genus;
-
     this.selectedSpecies = undefined;
     this.species = [];
-
     this.loading = true;
-
     this.categoryService.listSpecies(genus.id_genus).subscribe({
-
-      next: (data) => {
-        this.species = data;
-        this.loading = false;
-      },
-
-      error: () => {
-        this.loading = false;
-      }
-
+      next: (data) => { this.species = data; this.loading = false; },
+      error: () => { this.loading = false; }
     });
-
   }
 
   selectSpecies(species: Species) {
-
     this.selectedSpecies = species;
+  }
 
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
   }
 
   save() {
 
     if (this.form.invalid || !this.selectedSpecies) {
-
       this.form.markAllAsTouched();
-
       return;
-
     }
 
-    const result = {
-      ...this.form.value,
-      id_species: this.selectedSpecies.id_species
-    };
+    if (this.selectedFile) {
 
-    this.dialogRef.close(result);
+      this.uploading = true;
+
+      this.artifactService.uploadImage(this.selectedFile).subscribe({
+        next: (res) => {
+          this.uploading = false;
+          this.form.patchValue({ image_url: res.image_url });
+          this.finishSave();
+        },
+        error: () => {
+          this.uploading = false;
+        }
+      });
+
+    } else {
+      this.finishSave();
+    }
 
   }
 
+  private finishSave() {
+    const result = {
+      ...this.form.value,
+      id_species: this.selectedSpecies!.id_species
+    };
+    this.dialogRef.close(result);
+  }
+
   cancel() {
-
     this.dialogRef.close();
-
   }
 
 }

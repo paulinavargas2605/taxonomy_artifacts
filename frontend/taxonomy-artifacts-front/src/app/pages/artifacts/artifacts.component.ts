@@ -5,6 +5,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { Artifact } from '../../models/artifact';
 import { ArtifactService } from '../../services/artifact.service';
@@ -19,7 +22,10 @@ import { ArtifactFormComponent } from '../../components/artifact-form/artifact-f
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatIconModule,
+    MatMenuModule
   ],
   templateUrl: './artifacts.component.html',
   styleUrl: './artifacts.component.css'

@@ -1,159 +1,51 @@
 <div class="container">
 
-    <div class="header">
+  <div class="header">
+    <h1>Artifacts</h1>
+    <button mat-raised-button color="primary" (click)="newArtifact()">
+      New Artifact
+    </button>
+  </div>
 
-        <h1>Artifacts</h1>
+  <div class="artifact-grid">
+    <mat-card
+      *ngFor="let artifact of artifacts"
+      class="artifact-card"
+      [class.inactive]="!artifact.active">
+
+      <div class="card-image-wrapper">
+        <img
+          mat-card-image
+          [src]="artifact.image_url"
+          [alt]="artifact.name"
+          class="card-image">
 
         <button
-            mat-raised-button
-            color="primary"
-            (click)="newArtifact()">
-
-            New Artifact
-
+          mat-icon-button
+          class="card-menu-btn"
+          [matMenuTriggerFor]="menu"
+          (click)="$event.stopPropagation()">
+          <mat-icon>more_vert</mat-icon>
         </button>
 
-    </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="edit(artifact)">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="delete(artifact)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
 
-    <table
-        mat-table
-        [dataSource]="artifacts"
-        class="mat-elevation-z2">
+      <mat-card-content>
+        <p class="artifact-name">{{ artifact.name }}</p>
+        <span class="status-chip" *ngIf="!artifact.active">Inactive</span>
+      </mat-card-content>
 
-        <!-- ID -->
-
-        <ng-container matColumnDef="id">
-
-            <th mat-header-cell *matHeaderCellDef>
-
-                ID
-
-            </th>
-
-            <td mat-cell *matCellDef="let artifact">
-
-                {{ artifact.id_artifact }}
-
-            </td>
-
-        </ng-container>
-
-        <!-- Name -->
-
-        <ng-container matColumnDef="name">
-
-            <th mat-header-cell *matHeaderCellDef>
-
-                Name
-
-            </th>
-
-            <td mat-cell *matCellDef="let artifact">
-
-                {{ artifact.name }}
-
-            </td>
-
-        </ng-container>
-
-        <!-- User -->
-
-        <ng-container matColumnDef="user">
-
-            <th mat-header-cell *matHeaderCellDef>
-
-                User
-
-            </th>
-
-            <td mat-cell *matCellDef="let artifact">
-
-                {{ artifact.id_user }}
-
-            </td>
-
-        </ng-container>
-
-        <!-- Image -->
-
-        <ng-container matColumnDef="image">
-
-            <th mat-header-cell *matHeaderCellDef>
-
-                Image URL
-
-            </th>
-
-            <td mat-cell *matCellDef="let artifact">
-
-                {{ artifact.image_url }}
-
-            </td>
-
-        </ng-container>
-
-        <!-- Active -->
-
-        <ng-container matColumnDef="active">
-
-            <th mat-header-cell *matHeaderCellDef>
-
-                Active
-
-            </th>
-
-            <td mat-cell *matCellDef="let artifact">
-
-                {{ artifact.active ? 'Yes' : 'No' }}
-
-            </td>
-
-        </ng-container>
-
-        <!-- Actions -->
-
-        <ng-container matColumnDef="actions">
-
-            <th mat-header-cell *matHeaderCellDef>
-
-                Actions
-
-            </th>
-
-            <td mat-cell *matCellDef="let artifact">
-
-                <button
-                    mat-raised-button
-                    color="primary"
-                    (click)="edit(artifact)">
-
-                    Edit
-
-                </button>
-
-                <button
-                    mat-raised-button
-                    color="warn"
-                    (click)="delete(artifact)">
-
-                    Delete
-
-                </button>
-
-            </td>
-
-        </ng-container>
-
-        <tr
-            mat-header-row
-            *matHeaderRowDef="displayedColumns">
-        </tr>
-
-        <tr
-            mat-row
-            *matRowDef="let row; columns: displayedColumns;">
-        </tr>
-
-    </table>
+    </mat-card>
+  </div>
 
 </div>

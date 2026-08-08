@@ -1,11 +1,12 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, UploadFile, File
 from app.schemas.artifact import ArtifactCreate, ArtifactUpdate
 from app.controllers.artifact_controller import (
     get_all_artifacts,
     get_one_artifact,
     register_artifact,
     modify_artifact,
-    remove_artifact
+    remove_artifact,
+    upload_image
 )
 
 router = APIRouter(prefix="/artifacts", tags=["Artifacts"])
@@ -34,3 +35,9 @@ def update_endpoint(id_artifact: int, data: ArtifactUpdate):
 @router.delete("/{id_artifact}")
 def delete_endpoint(id_artifact: int):
     return remove_artifact(id_artifact)
+
+@router.post("/upload-image")
+async def upload_image_endpoint(file: UploadFile = File(...)):
+    contents = await file.read()
+    url = upload_image(contents, file.filename, file.content_type)
+    return {"image_url": url}
