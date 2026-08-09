@@ -6,7 +6,8 @@ from app.controllers.category_controller import (
     get_families,
     get_genera,
     get_species,
-    get_one_species
+    get_one_species,
+    get_classification
 )
 
 router = APIRouter(prefix="/categories", tags=["Categories"])
@@ -40,6 +41,11 @@ def genera(id_family: int):
 @router.get("/species")
 def species(id_genus: int):
     return get_species(id_genus)
+
+
+@router.get("/classification/{id_species}")
+def classification(id_species: int):
+    return get_classification(id_species)
 
 
 @router.get("/species/{id_species}")

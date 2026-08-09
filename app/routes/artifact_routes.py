@@ -6,7 +6,8 @@ from app.controllers.artifact_controller import (
     register_artifact,
     modify_artifact,
     remove_artifact,
-    upload_image
+    upload_image,
+    get_classified
 )
 
 router = APIRouter(prefix="/artifacts", tags=["Artifacts"])
@@ -15,6 +16,18 @@ router = APIRouter(prefix="/artifacts", tags=["Artifacts"])
 @router.get("/")
 def list_endpoint():
     return get_all_artifacts()
+
+
+@router.post("/upload-image")
+async def upload_image_endpoint(file: UploadFile = File(...)):
+    contents = await file.read()
+    url = upload_image(contents, file.filename, file.content_type)
+    return {"image_url": url}
+
+
+@router.get("/{id_artifact}/classified")
+def classified_endpoint(id_artifact: int):
+    return get_classified(id_artifact)
 
 
 @router.get("/{id_artifact}")
@@ -35,9 +48,3 @@ def update_endpoint(id_artifact: int, data: ArtifactUpdate):
 @router.delete("/{id_artifact}")
 def delete_endpoint(id_artifact: int):
     return remove_artifact(id_artifact)
-
-@router.post("/upload-image")
-async def upload_image_endpoint(file: UploadFile = File(...)):
-    contents = await file.read()
-    url = upload_image(contents, file.filename, file.content_type)
-    return {"image_url": url}

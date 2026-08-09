@@ -47,3 +47,14 @@ export interface Species {
   name: string;
 
 }
+
+export interface Classification {
+
+  species: Species;
+  genus: Genus | null;
+  family: Family | null;
+  order: Order | null;
+  class: TaxonomicClass | null;
+  phylum: Phylum | null;
+
+}

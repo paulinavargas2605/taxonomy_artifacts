@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -46,12 +47,19 @@ export class ArtifactsComponent implements OnInit {
   constructor(
     private readonly artifactService: ArtifactService,
     private readonly dialog: MatDialog,
-    private readonly snackBar: MatSnackBar
+    private readonly snackBar: MatSnackBar,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
 
     this.listArtifacts();
+
+  }
+
+  viewDetail(artifact: Artifact) {
+
+    this.router.navigate(['/artifacts', artifact.id_artifact]);
 
   }
 

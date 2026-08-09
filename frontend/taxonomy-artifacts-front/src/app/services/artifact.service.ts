@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Artifact } from '../models/artifact';
+import { Artifact, ClassifiedArtifact } from '../models/artifact';
 
 @Injectable({
   providedIn: 'root'
@@ -45,14 +45,20 @@ export class ArtifactService {
 
   uploadImage(file: File) {
 
-  const formData = new FormData();
-  formData.append('file', file);
+    const formData = new FormData();
+    formData.append('file', file);
 
-  return this.http.post<{ image_url: string }>(
-    `${this.api}/upload-image`,
-    formData
-  );
+    return this.http.post<{ image_url: string }>(
+      `${this.api}/upload-image`,
+      formData
+    );
 
-}
+  }
+
+  getClassified(id: number): Observable<ClassifiedArtifact> {
+
+    return this.http.get<ClassifiedArtifact>(`${this.api}/${id}/classified`);
+
+  }
 
 }

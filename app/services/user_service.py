@@ -36,7 +36,7 @@ def get_user(id_user):
                 detail="The user does not exist."
             )
 
-        return response.data
+        return response.data[0]
 
     except HTTPException:
         raise

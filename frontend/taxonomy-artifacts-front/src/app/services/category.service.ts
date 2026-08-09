@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Phylum, TaxonomicClass, Order, Family, Genus, Species } from '../models/category';
+import { Phylum, TaxonomicClass, Order, Family, Genus, Species, Classification } from '../models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +62,12 @@ export class CategoryService {
   getSpecies(idSpecies: number): Observable<Species> {
 
     return this.http.get<Species>(`${this.api}/species/${idSpecies}`);
+
+  }
+
+  getClassification(idSpecies: number): Observable<Classification> {
+
+    return this.http.get<Classification>(`${this.api}/classification/${idSpecies}`);
 
   }
 

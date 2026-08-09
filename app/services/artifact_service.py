@@ -1,9 +1,11 @@
-from fastapi import HTTPException
-from app.database.connection import supabase
 import uuid
 import os
 
+from fastapi import HTTPException
+from app.database.connection import supabase
+
 BUCKET_NAME = "artifact-images"
+
 
 def list_artifacts():
     try:
@@ -39,7 +41,7 @@ def get_artifact(id_artifact):
                 detail="The artifact does not exist."
             )
 
-        return response.data
+        return response.data[0]
 
     except HTTPException:
         raise
@@ -106,6 +108,35 @@ def delete_artifact(id_artifact):
             detail="An error occurred while deleting the artifact."
         )
 
+
+def get_classified_artifact(id_artifact):
+    try:
+        response = (
+            supabase
+            .table("classified_artifact")
+            .select("*")
+            .eq("id_artifact", id_artifact)
+            .execute()
+        )
+
+        if not response.data:
+            raise HTTPException(
+                status_code=404,
+                detail="The artifact does not exist."
+            )
+
+        return response.data[0]
+
+    except HTTPException:
+        raise
+
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="An error occurred while fetching the classified artifact."
+        )
+
+
 def upload_artifact_image(file_bytes: bytes, filename: str, content_type: str) -> str:
     try:
         ext = os.path.splitext(filename)[1] or ".jpg"
@@ -120,7 +151,7 @@ def upload_artifact_image(file_bytes: bytes, filename: str, content_type: str) -
         public_url = supabase.storage.from_(BUCKET_NAME).get_public_url(unique_name)
 
         return public_url
-    
+
     except Exception:
         raise HTTPException(
             status_code=500,

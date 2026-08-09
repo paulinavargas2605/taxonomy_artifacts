@@ -5,7 +5,8 @@ from app.services.category_service import (
     list_families,
     list_genera,
     list_species,
-    get_species_by_id
+    get_species_by_id,
+    get_classification_chain
 )
 
 
@@ -35,3 +36,7 @@ def get_species(id_genus):
 
 def get_one_species(id_species):
     return get_species_by_id(id_species)
+
+
+def get_classification(id_species):
+    return get_classification_chain(id_species)

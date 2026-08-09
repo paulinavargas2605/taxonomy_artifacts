@@ -1,0 +1,90 @@
+<div class="container">
+
+  <a routerLink="/artifacts" class="back-link">
+    <mat-icon>arrow_back</mat-icon>
+    Back to Artifacts
+  </a>
+
+  <div class="loading-wrapper" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <div class="not-found" *ngIf="!loading && notFound">
+    <mat-icon>error_outline</mat-icon>
+    <p>Artifact not found.</p>
+  </div>
+
+  <div class="detail-layout" *ngIf="!loading && artifact">
+
+    <!-- Main content -->
+    <div class="main-content">
+
+      <div class="title-row">
+        <h1>{{ artifact.name }}</h1>
+        <span class="status-chip" [class.inactive]="!artifact.active">
+          {{ artifact.active ? 'Active' : 'Inactive' }}
+        </span>
+      </div>
+
+      <p class="scientific-name" *ngIf="classified?.species">
+        <em>{{ classified?.species }}</em>
+      </p>
+
+      <img
+        *ngIf="artifact.image_url"
+        [src]="artifact.image_url"
+        [alt]="artifact.name"
+        class="main-image">
+
+      <p class="contributor" *ngIf="user">
+        Added by <strong>{{ user.username }}</strong>
+      </p>
+
+    </div>
+
+    <!-- Taxobox / classification sidebar -->
+    <mat-card class="taxobox">
+
+      <mat-card-header>
+        <mat-card-title>Classification</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <div class="tax-row" *ngIf="classified?.phylum">
+          <span class="tax-label">Phylum</span>
+          <span class="tax-value">{{ classified?.phylum }}</span>
+        </div>
+
+        <div class="tax-row" *ngIf="classified?.class">
+          <span class="tax-label">Class</span>
+          <span class="tax-value">{{ classified?.class }}</span>
+        </div>
+
+        <div class="tax-row" *ngIf="classified?.order_name">
+          <span class="tax-label">Order</span>
+          <span class="tax-value">{{ classified?.order_name }}</span>
+        </div>
+
+        <div class="tax-row" *ngIf="classified?.family">
+          <span class="tax-label">Family</span>
+          <span class="tax-value">{{ classified?.family }}</span>
+        </div>
+
+        <div class="tax-row" *ngIf="classified?.genus">
+          <span class="tax-label">Genus</span>
+          <span class="tax-value">{{ classified?.genus }}</span>
+        </div>
+
+        <div class="tax-row" *ngIf="classified?.species">
+          <span class="tax-label">Species</span>
+          <span class="tax-value">{{ classified?.species }}</span>
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  </div>
+
+</div>

@@ -11,7 +11,8 @@
     <mat-card
       *ngFor="let artifact of artifacts"
       class="artifact-card"
-      [class.inactive]="!artifact.active">
+      [class.inactive]="!artifact.active"
+      (click)="viewDetail(artifact)">
 
       <div class="card-image-wrapper">
         <img
