@@ -1,9 +1,9 @@
 <div class="container">
 
   <div class="header">
-    <h1>Artifacts</h1>
+    <h1>{{ 'ARTIFACTS.TITLE' | translate }}</h1>
     <button mat-raised-button color="primary" (click)="newArtifact()">
-      New Artifact
+      {{ 'ARTIFACTS.NEW' | translate }}
     </button>
   </div>
 
@@ -32,18 +32,18 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="edit(artifact)">
             <mat-icon>edit</mat-icon>
-            <span>Edit</span>
+            <span>{{ 'ARTIFACTS.EDIT' | translate }}</span>
           </button>
           <button mat-menu-item (click)="delete(artifact)">
             <mat-icon>delete</mat-icon>
-            <span>Delete</span>
+            <span>{{ 'ARTIFACTS.DELETE' | translate }}</span>
           </button>
         </mat-menu>
       </div>
 
       <mat-card-content>
         <p class="artifact-name">{{ artifact.name }}</p>
-        <span class="status-chip" *ngIf="!artifact.active">Inactive</span>
+        <span class="status-chip" *ngIf="!artifact.active">{{ 'ARTIFACTS.INACTIVE' | translate }}</span>
       </mat-card-content>
 
     </mat-card>

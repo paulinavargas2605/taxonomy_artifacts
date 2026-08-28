@@ -7,7 +7,7 @@ def list_phyla():
         response = (
             supabase
             .table("phylum")
-            .select("id_phylum, name, public_description")
+            .select("id_phylum, name, name_es, public_description")
             .execute()
         )
         return response.data
@@ -20,7 +20,7 @@ def list_classes(id_phylum: int):
         response = (
             supabase
             .table("class")
-            .select("id_class, name")
+            .select("id_class, name, name_es")
             .eq("id_phylum", id_phylum)
             .execute()
         )
@@ -34,7 +34,7 @@ def list_orders(id_class: int):
         response = (
             supabase
             .table("orders")
-            .select("id_order, name")
+            .select("id_order, name, name_es")
             .eq("id_class", id_class)
             .execute()
         )
@@ -48,7 +48,7 @@ def list_families(id_order: int):
         response = (
             supabase
             .table("family")
-            .select("id_family, name")
+            .select("id_family, name, name_es")
             .eq("id_order", id_order)
             .execute()
         )
@@ -62,7 +62,7 @@ def list_genera(id_family: int):
         response = (
             supabase
             .table("genus")
-            .select("id_genus, name")
+            .select("id_genus, name, name_es")
             .eq("id_family", id_family)
             .execute()
         )
@@ -76,7 +76,7 @@ def list_species(id_genus: int):
         response = (
             supabase
             .table("species")
-            .select("id_species, name")
+            .select("id_species, name, name_es")
             .eq("id_genus", id_genus)
             .execute()
         )
@@ -90,7 +90,7 @@ def get_species_by_id(id_species: int):
         response = (
             supabase
             .table("species")
-            .select("id_species, name")
+            .select("id_species, name, name_es")
             .eq("id_species", id_species)
             .execute()
         )
@@ -124,7 +124,7 @@ def get_classification_chain(id_species: int):
     try:
         species = _get_one(
             "species", "id_species", id_species,
-            "id_species, name, id_genus"
+            "id_species, name, name_es, id_genus"
         )
 
         if not species:
@@ -132,27 +132,27 @@ def get_classification_chain(id_species: int):
 
         genus = _get_one(
             "genus", "id_genus", species["id_genus"],
-            "id_genus, name, id_family"
+            "id_genus, name, name_es, id_family"
         )
 
         family = _get_one(
             "family", "id_family", genus["id_family"],
-            "id_family, name, id_order"
+            "id_family, name, name_es, id_order"
         ) if genus else None
 
         order = _get_one(
             "orders", "id_order", family["id_order"],
-            "id_order, name, id_class"
+            "id_order, name, name_es, id_class"
         ) if family else None
 
         taxonomic_class = _get_one(
             "class", "id_class", order["id_class"],
-            "id_class, name, id_phylum"
+            "id_class, name, name_es, id_phylum"
         ) if order else None
 
         phylum = _get_one(
             "phylum", "id_phylum", taxonomic_class["id_phylum"],
-            "id_phylum, name, public_description"
+            "id_phylum, name, name_es, public_description"
         ) if taxonomic_class else None
 
         return {

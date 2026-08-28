@@ -2,14 +2,14 @@
 
     <div class="header">
 
-        <h1>Users</h1>
+        <h1>{{ 'USERS.TITLE' | translate }}</h1>
 
         <button
         mat-raised-button
         color="primary"
         (click)="newUser()">
 
-            New User
+            {{ 'USERS.NEW' | translate }}
 
         </button>
 
@@ -24,7 +24,7 @@
 
             <th mat-header-cell *matHeaderCellDef>
 
-                ID
+                {{ 'USERS.COLUMN_ID' | translate }}
 
             </th>
 
@@ -40,7 +40,7 @@
 
             <th mat-header-cell *matHeaderCellDef>
 
-                User
+                {{ 'USERS.COLUMN_USER' | translate }}
 
             </th>
 
@@ -56,7 +56,7 @@
 
             <th mat-header-cell *matHeaderCellDef>
 
-                Email
+                {{ 'USERS.COLUMN_EMAIL' | translate }}
 
             </th>
 
@@ -72,7 +72,7 @@
 
             <th mat-header-cell *matHeaderCellDef>
 
-                Type
+                {{ 'USERS.COLUMN_TYPE' | translate }}
 
             </th>
 
@@ -88,7 +88,7 @@
 
             <th mat-header-cell *matHeaderCellDef>
 
-                Actions
+                {{ 'USERS.COLUMN_ACTIONS' | translate }}
 
             </th>
 
@@ -99,7 +99,7 @@
                 color="primary"
                 (click)="edit(user)">
 
-                    Edit
+                    {{ 'USERS.EDIT' | translate }}
 
                 </button>
 
@@ -108,7 +108,7 @@
                 color="warn"
                 (click)="delete(user)">
 
-                    Delete
+                    {{ 'USERS.DELETE' | translate }}
 
                 </button>
 

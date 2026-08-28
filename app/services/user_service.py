@@ -1,5 +1,6 @@
 from fastapi import HTTPException
 from app.database.connection import supabase
+from app.utils.security import hash_password
 
 
 def list_users():
@@ -65,6 +66,9 @@ def create_user(data):
                 detail="A user with that email already exists."
             )
 
+        if "password_hash" in data and data["password_hash"]:
+            data["password_hash"] = hash_password(data["password_hash"])
+
         response = (
             supabase
             .table("users")
@@ -100,6 +104,9 @@ def update_user(id_user, data):
                 status_code=404,
                 detail="The user does not exist."
             )
+
+        if "password_hash" in data and data["password_hash"]:
+            data["password_hash"] = hash_password(data["password_hash"])
 
         response = (
             supabase

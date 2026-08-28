@@ -1,0 +1,66 @@
+{
+  "MENU": {
+    "BRAND": "Taxonomía de Artefactos",
+    "ARTIFACTS": "Artefactos",
+    "USERS": "Usuarios",
+    "LOGIN": "Iniciar sesión",
+    "LOGOUT": "Cerrar sesión"
+  },
+    "LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "USERNAME": "Usuario",
+    "PASSWORD": "Contraseña",
+    "SUBMIT": "Iniciar sesión",
+    "USERNAME_REQUIRED": "El usuario es obligatorio",
+    "PASSWORD_REQUIRED": "La contraseña es obligatoria",
+    "ERROR": "Usuario o contraseña inválidos"
+  },
+  "ARTIFACTS": {
+    "TITLE": "Artefactos",
+    "NEW": "Nuevo Artefacto",
+    "EDIT": "Editar",
+    "DELETE": "Eliminar",
+    "INACTIVE": "Inactivo",
+    "CREATED": "Artefacto creado exitosamente",
+    "CREATE_ERROR": "Error al crear el artefacto",
+    "UPDATED": "Artefacto actualizado",
+    "UPDATE_ERROR": "Error al actualizar",
+    "DELETED": "Artefacto eliminado",
+    "DELETE_ERROR": "No se pudo eliminar",
+    "CLOSE": "Cerrar",
+    "CONFIRM_DELETE": "¿Eliminar \"{{name}}\"?"
+  },
+  "USERS": {
+    "TITLE": "Usuarios",
+    "NEW": "Nuevo Usuario",
+    "COLUMN_ID": "ID",
+    "COLUMN_USER": "Usuario",
+    "COLUMN_EMAIL": "Correo",
+    "COLUMN_TYPE": "Tipo",
+    "COLUMN_ACTIONS": "Acciones",
+    "EDIT": "Editar",
+    "DELETE": "Eliminar",
+    "CREATED": "Usuario creado exitosamente",
+    "CREATE_ERROR": "No se pudo crear el usuario",
+    "UPDATED": "Usuario actualizado",
+    "UPDATE_ERROR": "Error al actualizar",
+    "DELETED": "Usuario eliminado",
+    "DELETE_ERROR": "No se pudo eliminar el usuario",
+    "CLOSE": "Cerrar",
+    "CONFIRM_DELETE": "¿Eliminar a {{name}}?"
+  },
+  "ARTIFACT_DETAIL": {
+    "BACK": "Volver a Artefactos",
+    "ACTIVE": "Activo",
+    "INACTIVE": "Inactivo",
+    "ADDED_BY": "Agregado por",
+    "NOT_FOUND": "Artefacto no encontrado.",
+    "CLASSIFICATION": "Clasificación",
+    "PHYLUM": "Filo",
+    "CLASS": "Clase",
+    "ORDER": "Orden",
+    "FAMILY": "Familia",
+    "GENUS": "Género",
+    "SPECIES": "Especie"
+  }
+}

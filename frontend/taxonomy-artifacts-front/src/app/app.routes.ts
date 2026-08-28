@@ -4,13 +4,19 @@ import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ArtifactsComponent } from './pages/artifacts/artifacts.component';
 import { ArtifactDetailComponent } from './pages/artifact-detail/artifact-detail.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
 
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'artifacts',
         pathMatch: 'full'
+    },
+
+    {
+        path: 'login',
+        component: LoginComponent
     },
 
     {

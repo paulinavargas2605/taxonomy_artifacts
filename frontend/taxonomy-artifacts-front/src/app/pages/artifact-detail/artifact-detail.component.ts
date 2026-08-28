@@ -8,11 +8,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 
+import { TranslatePipe } from '@ngx-translate/core';
+
 import { Artifact, ClassifiedArtifact } from '../../models/artifact';
 import { User } from '../../models/user';
 
 import { ArtifactService } from '../../services/artifact.service';
 import { UserService } from '../../services/user.service';
+import { LocalizedNamePipe } from '../../pipes/localized-name.pipe';
 
 @Component({
   selector: 'app-artifact-detail',
@@ -24,7 +27,9 @@ import { UserService } from '../../services/user.service';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    TranslatePipe,
+    LocalizedNamePipe
   ],
   templateUrl: './artifact-detail.component.html',
   styleUrl: './artifact-detail.component.css'

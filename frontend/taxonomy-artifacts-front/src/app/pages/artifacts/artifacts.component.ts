@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,8 +10,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+
 import { Artifact } from '../../models/artifact';
 import { ArtifactService } from '../../services/artifact.service';
+import { AuthService } from '../../services/auth.service';
 
 import { ArtifactFormComponent } from '../../components/artifact-form/artifact-form.component';
 
@@ -26,7 +29,8 @@ import { ArtifactFormComponent } from '../../components/artifact-form/artifact-f
     MatSnackBarModule,
     MatCardModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    TranslatePipe
   ],
   templateUrl: './artifacts.component.html',
   styleUrl: './artifacts.component.css'
@@ -48,12 +52,21 @@ export class ArtifactsComponent implements OnInit {
     private readonly artifactService: ArtifactService,
     private readonly dialog: MatDialog,
     private readonly snackBar: MatSnackBar,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+    private readonly translate: TranslateService,
+    private readonly authService: AuthService
   ) {}
 
   ngOnInit(): void {
 
     this.listArtifacts();
+
+    const openNew = this.route.snapshot.queryParamMap.get('openNew');
+
+    if (openNew === 'true') {
+      this.newArtifact();
+    }
 
   }
 
@@ -81,6 +94,14 @@ export class ArtifactsComponent implements OnInit {
 
   newArtifact() {
 
+    if (!this.authService.isLoggedIn()) {
+
+      this.router.navigate(['/login'], { queryParams: { redirect: 'new-artifact' } });
+
+      return;
+
+    }
+
     const dialog = this.dialog.open(ArtifactFormComponent, {
 
       width: '850px',
@@ -100,8 +121,8 @@ export class ArtifactsComponent implements OnInit {
           this.listArtifacts();
 
           this.snackBar.open(
-            'Artifact created successfully',
-            'Close',
+            this.translate.instant('ARTIFACTS.CREATED'),
+            this.translate.instant('ARTIFACTS.CLOSE'),
             {
               duration: 3000
             }
@@ -112,8 +133,8 @@ export class ArtifactsComponent implements OnInit {
         error: () => {
 
           this.snackBar.open(
-            'Error creating the artifact',
-            'Close',
+            this.translate.instant('ARTIFACTS.CREATE_ERROR'),
+            this.translate.instant('ARTIFACTS.CLOSE'),
             {
               duration: 3000
             }
@@ -153,8 +174,8 @@ export class ArtifactsComponent implements OnInit {
           this.listArtifacts();
 
           this.snackBar.open(
-            'Artifact updated',
-            'Close',
+            this.translate.instant('ARTIFACTS.UPDATED'),
+            this.translate.instant('ARTIFACTS.CLOSE'),
             {
               duration: 3000
             }
@@ -165,8 +186,8 @@ export class ArtifactsComponent implements OnInit {
         error: () => {
 
           this.snackBar.open(
-            'Error updating',
-            'Close',
+            this.translate.instant('ARTIFACTS.UPDATE_ERROR'),
+            this.translate.instant('ARTIFACTS.CLOSE'),
             {
               duration: 3000
             }
@@ -182,7 +203,9 @@ export class ArtifactsComponent implements OnInit {
 
   delete(artifact: Artifact) {
 
-    if (!confirm(`Delete "${artifact.name}"?`))
+    const confirmText = this.translate.instant('ARTIFACTS.CONFIRM_DELETE', { name: artifact.name });
+
+    if (!confirm(confirmText))
       return;
 
     this.artifactService.delete(
@@ -194,8 +217,8 @@ export class ArtifactsComponent implements OnInit {
         this.listArtifacts();
 
         this.snackBar.open(
-          'Artifact deleted',
-          'Close',
+          this.translate.instant('ARTIFACTS.DELETED'),
+          this.translate.instant('ARTIFACTS.CLOSE'),
           {
             duration: 3000
           }
@@ -206,8 +229,8 @@ export class ArtifactsComponent implements OnInit {
       error: () => {
 
         this.snackBar.open(
-          'Could not delete',
-          'Close',
+          this.translate.instant('ARTIFACTS.DELETE_ERROR'),
+          this.translate.instant('ARTIFACTS.CLOSE'),
           {
             duration: 3000
           }

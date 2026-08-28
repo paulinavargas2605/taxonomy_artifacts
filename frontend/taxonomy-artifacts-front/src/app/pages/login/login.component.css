@@ -1,0 +1,49 @@
+.login-wrapper {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+
+}
+
+.login-card {
+
+  width: 100%;
+  max-width: 360px;
+  padding: 32px;
+
+}
+
+.login-card h1 {
+
+  margin: 0 0 24px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+
+}
+
+form {
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+}
+
+mat-form-field {
+
+  width: 100%;
+
+}
+
+.submit-btn {
+
+  margin-top: 8px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}

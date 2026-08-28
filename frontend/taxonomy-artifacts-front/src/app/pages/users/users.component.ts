@@ -8,6 +8,8 @@ import { User } from '../../models/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+
 import { UserFormComponent } from '../../components/user-form/user-form.component';
 
 @Component({
@@ -18,7 +20,8 @@ import { UserFormComponent } from '../../components/user-form/user-form.componen
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TranslatePipe
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
@@ -38,7 +41,8 @@ export class UsersComponent implements OnInit{
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -80,8 +84,8 @@ export class UsersComponent implements OnInit{
           this.listUsers();
 
           this.snackBar.open(
-            'User created successfully',
-            'Close',
+            this.translate.instant('USERS.CREATED'),
+            this.translate.instant('USERS.CLOSE'),
             {
               duration: 3000
             }
@@ -92,8 +96,8 @@ export class UsersComponent implements OnInit{
         error: () => {
 
           this.snackBar.open(
-            'Could not create the user',
-            'Close',
+            this.translate.instant('USERS.CREATE_ERROR'),
+            this.translate.instant('USERS.CLOSE'),
             {
               duration: 3000
             }
@@ -128,8 +132,8 @@ export class UsersComponent implements OnInit{
           this.listUsers();
 
           this.snackBar.open(
-            'User updated',
-            'Close',
+            this.translate.instant('USERS.UPDATED'),
+            this.translate.instant('USERS.CLOSE'),
             {
               duration: 3000
             }
@@ -140,8 +144,8 @@ export class UsersComponent implements OnInit{
         error: () => {
 
           this.snackBar.open(
-            'Error updating',
-            'Close',
+            this.translate.instant('USERS.UPDATE_ERROR'),
+            this.translate.instant('USERS.CLOSE'),
             {
               duration: 3000
             }
@@ -157,7 +161,9 @@ export class UsersComponent implements OnInit{
 
   delete(user: User) {
 
-    if (!confirm(`Delete ${user.username}?`)) return;
+    const confirmText = this.translate.instant('USERS.CONFIRM_DELETE', { name: user.username });
+
+    if (!confirm(confirmText)) return;
 
     this.userService.delete(user.id_user!).subscribe({
 
@@ -166,8 +172,8 @@ export class UsersComponent implements OnInit{
         this.listUsers();
 
         this.snackBar.open(
-          'User deleted',
-          'Close',
+          this.translate.instant('USERS.DELETED'),
+          this.translate.instant('USERS.CLOSE'),
           {
             duration: 3000
           }
@@ -178,8 +184,8 @@ export class UsersComponent implements OnInit{
       error: () => {
 
         this.snackBar.open(
-          'Could not delete the user',
-          'Close',
+          this.translate.instant('USERS.DELETE_ERROR'),
+          this.translate.instant('USERS.CLOSE'),
           {
             duration: 3000
           }

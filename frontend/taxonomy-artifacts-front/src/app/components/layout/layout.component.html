@@ -2,34 +2,75 @@
 
   <mat-sidenav mode="side" opened class="menu">
 
-    <div class="brand">Artifact Taxonomy</div>
+    <div class="brand">{{ 'MENU.BRAND' | translate }}</div>
 
     <mat-nav-list>
 
-      <a mat-list-item routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
-        <mat-icon matListItemIcon>home</mat-icon>
-        <span matListItemTitle>Home</span>
-      </a>
-
       <a mat-list-item routerLink="/artifacts" routerLinkActive="active-link">
         <mat-icon matListItemIcon>collections_bookmark</mat-icon>
-        <span matListItemTitle>Artifacts</span>
+        <span matListItemTitle>{{ 'MENU.ARTIFACTS' | translate }}</span>
       </a>
 
       <a mat-list-item routerLink="/users" routerLinkActive="active-link">
         <mat-icon matListItemIcon>group</mat-icon>
-        <span matListItemTitle>Users</span>
+        <span matListItemTitle>{{ 'MENU.USERS' | translate }}</span>
       </a>
 
     </mat-nav-list>
+
+    <div class="lang-switch">
+
+      <span [class.active]="currentLang === 'en'">EN</span>
+
+      <mat-slide-toggle
+        [checked]="currentLang === 'es'"
+        (change)="onLanguageToggle($event.checked)">
+      </mat-slide-toggle>
+
+      <span [class.active]="currentLang === 'es'">ES</span>
+
+    </div>
 
   </mat-sidenav>
 
   <mat-sidenav-content>
 
-    <mat-toolbar color="primary">
-      Artifact Taxonomy
-    </mat-toolbar>
+    <ng-container *ngIf="(currentUser$ | async) as user; else loggedOut">
+
+      <button
+        mat-stroked-button
+        color="primary"
+        class="login-btn"
+        [matMenuTriggerFor]="userMenu">
+
+        <mat-icon>account_circle</mat-icon>
+        {{ user.username }}
+
+      </button>
+
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>{{ 'MENU.LOGOUT' | translate }}</span>
+        </button>
+      </mat-menu>
+
+    </ng-container>
+
+    <ng-template #loggedOut>
+
+      <button
+        mat-stroked-button
+        color="primary"
+        class="login-btn"
+        routerLink="/login">
+
+        <mat-icon>login</mat-icon>
+        {{ 'MENU.LOGIN' | translate }}
+
+      </button>
+
+    </ng-template>
 
     <div class="content">
       <router-outlet></router-outlet>

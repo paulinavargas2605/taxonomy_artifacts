@@ -2,7 +2,7 @@
 
   <a routerLink="/artifacts" class="back-link">
     <mat-icon>arrow_back</mat-icon>
-    Back to Artifacts
+    {{ 'ARTIFACT_DETAIL.BACK' | translate }}
   </a>
 
   <div class="loading-wrapper" *ngIf="loading">
@@ -11,7 +11,7 @@
 
   <div class="not-found" *ngIf="!loading && notFound">
     <mat-icon>error_outline</mat-icon>
-    <p>Artifact not found.</p>
+    <p>{{ 'ARTIFACT_DETAIL.NOT_FOUND' | translate }}</p>
   </div>
 
   <div class="detail-layout" *ngIf="!loading && artifact">
@@ -22,12 +22,12 @@
       <div class="title-row">
         <h1>{{ artifact.name }}</h1>
         <span class="status-chip" [class.inactive]="!artifact.active">
-          {{ artifact.active ? 'Active' : 'Inactive' }}
+          {{ (artifact.active ? 'ARTIFACT_DETAIL.ACTIVE' : 'ARTIFACT_DETAIL.INACTIVE') | translate }}
         </span>
       </div>
 
       <p class="scientific-name" *ngIf="classified?.species">
-        <em>{{ classified?.species }}</em>
+        <em>{{ classified?.species | localizedName:classified?.species_es }}</em>
       </p>
 
       <img
@@ -37,7 +37,7 @@
         class="main-image">
 
       <p class="contributor" *ngIf="user">
-        Added by <strong>{{ user.username }}</strong>
+        {{ 'ARTIFACT_DETAIL.ADDED_BY' | translate }} <strong>{{ user.username }}</strong>
       </p>
 
     </div>
@@ -46,39 +46,39 @@
     <mat-card class="taxobox">
 
       <mat-card-header>
-        <mat-card-title>Classification</mat-card-title>
+        <mat-card-title>{{ 'ARTIFACT_DETAIL.CLASSIFICATION' | translate }}</mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
 
         <div class="tax-row" *ngIf="classified?.phylum">
-          <span class="tax-label">Phylum</span>
-          <span class="tax-value">{{ classified?.phylum }}</span>
+          <span class="tax-label">{{ 'ARTIFACT_DETAIL.PHYLUM' | translate }}</span>
+          <span class="tax-value">{{ classified?.phylum | localizedName:classified?.phylum_es }}</span>
         </div>
 
         <div class="tax-row" *ngIf="classified?.class">
-          <span class="tax-label">Class</span>
-          <span class="tax-value">{{ classified?.class }}</span>
+          <span class="tax-label">{{ 'ARTIFACT_DETAIL.CLASS' | translate }}</span>
+          <span class="tax-value">{{ classified?.class | localizedName:classified?.class_es }}</span>
         </div>
 
         <div class="tax-row" *ngIf="classified?.order_name">
-          <span class="tax-label">Order</span>
-          <span class="tax-value">{{ classified?.order_name }}</span>
+          <span class="tax-label">{{ 'ARTIFACT_DETAIL.ORDER' | translate }}</span>
+          <span class="tax-value">{{ classified?.order_name | localizedName:classified?.order_name_es }}</span>
         </div>
 
         <div class="tax-row" *ngIf="classified?.family">
-          <span class="tax-label">Family</span>
-          <span class="tax-value">{{ classified?.family }}</span>
+          <span class="tax-label">{{ 'ARTIFACT_DETAIL.FAMILY' | translate }}</span>
+          <span class="tax-value">{{ classified?.family | localizedName:classified?.family_es }}</span>
         </div>
 
         <div class="tax-row" *ngIf="classified?.genus">
-          <span class="tax-label">Genus</span>
-          <span class="tax-value">{{ classified?.genus }}</span>
+          <span class="tax-label">{{ 'ARTIFACT_DETAIL.GENUS' | translate }}</span>
+          <span class="tax-value">{{ classified?.genus | localizedName:classified?.genus_es }}</span>
         </div>
 
         <div class="tax-row" *ngIf="classified?.species">
-          <span class="tax-label">Species</span>
-          <span class="tax-value">{{ classified?.species }}</span>
+          <span class="tax-label">{{ 'ARTIFACT_DETAIL.SPECIES' | translate }}</span>
+          <span class="tax-value">{{ classified?.species | localizedName:classified?.species_es }}</span>
         </div>
 
       </mat-card-content>

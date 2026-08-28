@@ -1,0 +1,49 @@
+<div class="login-wrapper">
+
+  <mat-card class="login-card">
+
+    <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>{{ 'LOGIN.USERNAME' | translate }}</mat-label>
+
+        <input matInput type="text" formControlName="username">
+
+        <mat-error *ngIf="form.get('username')?.hasError('required')">
+          {{ 'LOGIN.USERNAME_REQUIRED' | translate }}
+        </mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
+
+        <input matInput type="password" formControlName="password">
+
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          {{ 'LOGIN.PASSWORD_REQUIRED' | translate }}
+        </mat-error>
+
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="submit-btn"
+        [disabled]="loading">
+
+        <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+        <span *ngIf="!loading">{{ 'LOGIN.SUBMIT' | translate }}</span>
+
+      </button>
+
+    </form>
+
+  </mat-card>
+
+</div>

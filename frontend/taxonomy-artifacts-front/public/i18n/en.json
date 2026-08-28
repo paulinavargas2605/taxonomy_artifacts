@@ -1,0 +1,66 @@
+{
+    "MENU": {
+    "BRAND": "Artifact Taxonomy",
+    "ARTIFACTS": "Artifacts",
+    "USERS": "Users",
+    "LOGIN": "Login",
+    "LOGOUT": "Log out"
+  },
+    "LOGIN": {
+    "TITLE": "Sign in",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "SUBMIT": "Sign in",
+    "USERNAME_REQUIRED": "Username is required",
+    "PASSWORD_REQUIRED": "Password is required",
+    "ERROR": "Invalid username or password"
+  },
+  "ARTIFACTS": {
+    "TITLE": "Artifacts",
+    "NEW": "New Artifact",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "INACTIVE": "Inactive",
+    "CREATED": "Artifact created successfully",
+    "CREATE_ERROR": "Error creating the artifact",
+    "UPDATED": "Artifact updated",
+    "UPDATE_ERROR": "Error updating",
+    "DELETED": "Artifact deleted",
+    "DELETE_ERROR": "Could not delete",
+    "CLOSE": "Close",
+    "CONFIRM_DELETE": "Delete \"{{name}}\"?"
+  },
+  "USERS": {
+    "TITLE": "Users",
+    "NEW": "New User",
+    "COLUMN_ID": "ID",
+    "COLUMN_USER": "User",
+    "COLUMN_EMAIL": "Email",
+    "COLUMN_TYPE": "Type",
+    "COLUMN_ACTIONS": "Actions",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "CREATED": "User created successfully",
+    "CREATE_ERROR": "Could not create the user",
+    "UPDATED": "User updated",
+    "UPDATE_ERROR": "Error updating",
+    "DELETED": "User deleted",
+    "DELETE_ERROR": "Could not delete the user",
+    "CLOSE": "Close",
+    "CONFIRM_DELETE": "Delete {{name}}?"
+  },
+  "ARTIFACT_DETAIL": {
+    "BACK": "Back to Artifacts",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "ADDED_BY": "Added by",
+    "NOT_FOUND": "Artifact not found.",
+    "CLASSIFICATION": "Classification",
+    "PHYLUM": "Phylum",
+    "CLASS": "Class",
+    "ORDER": "Order",
+    "FAMILY": "Family",
+    "GENUS": "Genus",
+    "SPECIES": "Species"
+  }
+}
