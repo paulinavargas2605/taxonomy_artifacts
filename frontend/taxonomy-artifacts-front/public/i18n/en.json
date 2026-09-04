@@ -1,5 +1,6 @@
 {
-    "MENU": {
+  "MENU": {
+    "HOME": "Home",
     "BRAND": "Artifact Taxonomy",
     "ARTIFACTS": "Artifacts",
     "USERS": "Users",

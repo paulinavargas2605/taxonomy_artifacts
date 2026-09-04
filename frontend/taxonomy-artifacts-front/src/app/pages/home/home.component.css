@@ -1,17 +1,108 @@
 .home-container {
 
-  padding: 8px;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 32px 16px 60px;
 
 }
 
-.home-container h1 {
+.hero {
 
-  margin-bottom: 8px;
+  margin-bottom: 32px;
 
 }
 
-.home-container p {
+.hero h1 {
 
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 12px;
+
+}
+
+.lead {
+
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+
+}
+
+.block {
+
+  margin-bottom: 28px;
+
+}
+
+.block h2 {
+
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+
+}
+
+.block p {
+
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+
+}
+
+.levels-grid {
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+
+}
+
+.level {
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background-color: rgba(63, 81, 181, 0.06);
+
+}
+
+.level-name {
+
+  font-size: 13px;
+  font-weight: 600;
+  color: #3f51b5;
+
+}
+
+.level-desc {
+
+  font-size: 12px;
   color: rgba(0, 0, 0, 0.6);
+
+}
+
+.cta {
+
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 24px;
+  border-radius: 6px;
+  background-color: #3f51b5;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+
+}
+
+.cta:hover {
+
+  background-color: #34409a;
 
 }
