@@ -14,7 +14,8 @@ def list_users():
 
         return response.data
 
-    except Exception:
+    except Exception as e:
+        print(f"ERROR REAL: {e}")  # <-- esto lo vamos a ver en los logs de Render
         raise HTTPException(
             status_code=500,
             detail="An error occurred while listing users."
