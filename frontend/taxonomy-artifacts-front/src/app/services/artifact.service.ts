@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Artifact, ClassifiedArtifact } from '../models/artifact';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtifactService {
 
-  private api = "http://127.0.0.1:8000/artifacts";
+  private api = `${environment.apiUrl}/artifacts`;
 
   constructor(private http: HttpClient) { }
 

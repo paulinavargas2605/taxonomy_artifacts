@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Phylum, TaxonomicClass, Order, Family, Genus, Species, Classification } from '../models/category';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  private api = "http://127.0.0.1:8000/categories";
+  private api = `${environment.apiUrl}/categories`;
 
   constructor(private http: HttpClient) { }
 
