@@ -16,7 +16,7 @@
         <span matListItemTitle>{{ 'MENU.ARTIFACTS' | translate }}</span>
       </a>
 
-      <a mat-list-item routerLink="/users" routerLinkActive="active-link">
+      <a mat-list-item routerLink="/users" routerLinkActive="active-link" *ngIf="(currentUser$ | async)?.id_user_type === 4">
         <mat-icon matListItemIcon>group</mat-icon>
         <span matListItemTitle>{{ 'MENU.USERS' | translate }}</span>
       </a>
