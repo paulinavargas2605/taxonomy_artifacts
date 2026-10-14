@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
@@ -17,6 +17,10 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+
+import { UserType } from '../../models/user-type';
+import { UserTypeService } from '../../services/user-type.service';
 
 @Component({
   selector: 'app-user-form',
@@ -27,17 +31,21 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnInit {
 
   form: FormGroup;
 
+  userTypes: UserType[] = [];
+
   constructor(
     private fb: FormBuilder,
+    private userTypeService: UserTypeService,
     private dialogRef: MatDialogRef<UserFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any
   ){
@@ -59,6 +67,22 @@ export class UserFormComponent {
       this.form.patchValue(data);
 
     }
+
+  }
+
+  ngOnInit(): void {
+
+    this.userTypeService.list().subscribe({
+
+      next: (types) => {
+
+        this.userTypes = types;
+
+      },
+
+      error: () => {}
+
+    });
 
   }
 

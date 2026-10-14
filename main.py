@@ -6,6 +6,7 @@ from app.routes.artifact_routes import router as artifact_router
 from app.routes.category_routes import router as category_router
 from app.routes.auth_routes import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
+from app.routes.user_type_routes import router as user_type_router
 
 app = FastAPI(
     title="Artifact Taxonomy API",
@@ -30,6 +31,7 @@ app.include_router(user_router)
 app.include_router(artifact_router)
 app.include_router(category_router)
 app.include_router(auth_router)
+app.include_router(user_type_router)    
 
 
 @app.get("/")

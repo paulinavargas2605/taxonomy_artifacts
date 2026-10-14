@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -42,7 +42,8 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private translate: TranslateService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
 
     this.currentUser$ = this.authService.currentUser$;
@@ -72,6 +73,8 @@ export class LayoutComponent implements OnInit {
   logout() {
 
     this.authService.logout();
+
+    this.router.navigate(['/home']);
 
   }
 
