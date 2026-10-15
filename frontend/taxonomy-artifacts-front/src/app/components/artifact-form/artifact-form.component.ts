@@ -28,6 +28,9 @@ import { Phylum, TaxonomicClass, Order, Family, Genus, Species } from '../../mod
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { ArtifactService } from '../../services/artifact.service';
+import { AuthService } from '../../services/auth.service';
+
+const ADMIN_USER_TYPE = 4;
 
 @Component({
   selector: 'app-artifact-form',
@@ -53,6 +56,9 @@ export class ArtifactFormComponent implements OnInit {
   form: FormGroup;
 
   users: User[] = [];
+
+  currentUser: User | null = null;
+  isAdmin = false;
 
   phyla: Phylum[] = [];
   classes: TaxonomicClass[] = [];
@@ -80,6 +86,7 @@ export class ArtifactFormComponent implements OnInit {
     private categoryService: CategoryService,
     private userService: UserService,
     private artifactService: ArtifactService,
+    private authService: AuthService,
     private dialogRef: MatDialogRef<ArtifactFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -104,13 +111,27 @@ export class ArtifactFormComponent implements OnInit {
 
     }
 
+    this.currentUser = this.authService.getCurrentUser();
+
+    this.isAdmin = this.currentUser?.id_user_type === ADMIN_USER_TYPE;
+
+    // when creating, the logged-in user is the default creator
+    // (only admins can change it; in edit mode the original owner is kept)
+    if (!data && this.currentUser) {
+
+      this.form.patchValue({ id_user: this.currentUser.id_user });
+
+    }
+
   }
 
   ngOnInit(): void {
 
     this.loadPhyla();
 
-    this.loadUsers();
+    if (this.isAdmin) {
+      this.loadUsers();
+    }
 
     if (this.editMode && this.selectedSpecies) {
 

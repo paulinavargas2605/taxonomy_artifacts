@@ -215,7 +215,7 @@
 
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+                        <mat-form-field appearance="outline" *ngIf="isAdmin">
 
                 <mat-label>User</mat-label>
 
@@ -232,6 +232,12 @@
                 </mat-select>
 
             </mat-form-field>
+
+            <div class="current-species" *ngIf="!isAdmin && !editMode && currentUser">
+
+                Creating as: <strong>{{ currentUser.username }}</strong>
+
+            </div>
 
             <div class="current-species" *ngIf="editMode && selectedSpecies">
 
