@@ -7,7 +7,34 @@
     "LOGIN": "Login",
     "LOGOUT": "Log out"
   },
-    "LOGIN": {
+  "LANG": {
+    "TITLE": "Translate",
+    "EN": "EN",
+    "ES": "ES"
+  },
+  "HOME": {
+    "TITLE": "General Taxonomy of Artifacts",
+    "LEAD": "This platform organizes the vast diversity of artifacts that are part of human life — tools, machines, technical substances, informational systems, symbolic objects, and biotechnological devices — under a common classification framework inspired by biological taxonomy.",
+    "WHAT_TITLE": "What is an artifact?",
+    "WHAT_TEXT": "An entity produced through deliberate human intervention: it is not enough for something to be used; it must have been designed, modified, or created with a practical, technical, symbolic, or social purpose. A carved spoon, a book, a program, a medicine, or a domesticated plant can be artifacts in this sense.",
+    "PROBLEM_TITLE": "What problem does this wiki solve?",
+    "PROBLEM_TEXT": "There is no open, comparable nomenclature for classifying technical and cultural objects that are so different from one another. This wiki proposes one, adapting the levels of biological classification to the world of human-made products — from the most general level down to the specific design of each artifact.",
+    "LEVELS_TITLE": "Taxonomic structure",
+    "LEVELS": {
+      "DOMAIN": { "NAME": "Domain", "DESC": "Cultural product" },
+      "KINGDOM": { "NAME": "Kingdom", "DESC": "Artifacts" },
+      "PHYLUM": { "NAME": "Phylum", "DESC": "Ontological nature" },
+      "CLASS": { "NAME": "Class", "DESC": "Structural form" },
+      "ORDER": { "NAME": "Order", "DESC": "Mode of operation" },
+      "FAMILY": { "NAME": "Family", "DESC": "General function" },
+      "GENUS": { "NAME": "Genus", "DESC": "Specific function" },
+      "SPECIES": { "NAME": "Species", "DESC": "Identifiable design" }
+    },
+    "WHO_TITLE": "Who is it for?",
+    "WHO_TEXT": "Researchers, designers, historians of technology, heritage professionals, engineers, curators, students, and communities interested in how technical and cultural objects are organized.",
+    "CTA": "Explore the artifacts"
+  },
+  "LOGIN": {
     "TITLE": "Sign in",
     "USERNAME": "Username",
     "PASSWORD": "Password",

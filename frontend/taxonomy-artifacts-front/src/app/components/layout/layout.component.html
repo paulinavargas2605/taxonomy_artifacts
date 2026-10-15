@@ -25,14 +25,26 @@
 
     <div class="lang-switch">
 
-      <span [class.active]="currentLang === 'en'">EN</span>
+      <span class="lang-title">{{ 'LANG.TITLE' | translate }}</span>
 
-      <mat-slide-toggle
-        [checked]="currentLang === 'es'"
-        (change)="onLanguageToggle($event.checked)">
-      </mat-slide-toggle>
+      <div class="lang-row">
 
-      <span [class.active]="currentLang === 'es'">ES</span>
+        <span class="lang-option" [class.active]="currentLang === 'en'">
+          <img src="flags/uk.svg" alt="" class="flag">
+          {{ 'LANG.EN' | translate }}
+        </span>
+
+        <mat-slide-toggle
+          [checked]="currentLang === 'es'"
+          (change)="onLanguageToggle($event.checked)">
+        </mat-slide-toggle>
+
+        <span class="lang-option" [class.active]="currentLang === 'es'">
+          <img src="flags/es.svg" alt="" class="flag">
+          {{ 'LANG.ES' | translate }}
+        </span>
+
+      </div>
 
     </div>
 

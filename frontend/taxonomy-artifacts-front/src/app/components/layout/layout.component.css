@@ -41,21 +41,51 @@ mat-nav-list a.active-link mat-icon {
 .lang-switch {
   margin-top: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  padding: 16px 8px;
+  padding: 14px 8px 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.lang-switch span {
+.lang-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.lang-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.4);
 }
 
-.lang-switch span.active {
+.lang-option.active {
   color: #3f51b5;
+  font-weight: 600;
+}
+
+.flag {
+  height: 14px;
+  width: auto;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+  opacity: 0.45;
+}
+
+.lang-option.active .flag {
+  opacity: 1;
 }
 
 .content {

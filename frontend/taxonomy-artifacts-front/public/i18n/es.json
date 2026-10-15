@@ -7,7 +7,34 @@
     "LOGIN": "Iniciar sesión",
     "LOGOUT": "Cerrar sesión"
   },
-    "LOGIN": {
+  "LANG": {
+    "TITLE": "Traducir",
+    "EN": "IN",
+    "ES": "ES"
+  },
+  "HOME": {
+    "TITLE": "Taxonomía General de Artefactos",
+    "LEAD": "Esta plataforma organiza la enorme diversidad de artefactos que forman parte de la vida humana — herramientas, máquinas, sustancias técnicas, sistemas informacionales, objetos simbólicos y dispositivos biotecnológicos — bajo un marco de clasificación común, inspirado en la taxonomía biológica.",
+    "WHAT_TITLE": "¿Qué es un artefacto?",
+    "WHAT_TEXT": "Una entidad producida mediante una intervención humana deliberada: no basta con que algo se use, tiene que haber sido diseñado, modificado o creado con una orientación práctica, técnica, simbólica o social. Una cuchara tallada, un libro, un programa, una medicina o una planta domesticada pueden ser artefactos en ese sentido.",
+    "PROBLEM_TITLE": "¿Qué problema resuelve esta wiki?",
+    "PROBLEM_TEXT": "No existe una nomenclatura abierta y comparable para clasificar objetos técnicos y culturales tan diversos entre sí. Esta wiki propone esa nomenclatura, adaptando los niveles de la clasificación biológica al mundo de los productos hechos por seres humanos — desde lo más general hasta el diseño específico de cada artefacto.",
+    "LEVELS_TITLE": "Estructura taxonómica",
+    "LEVELS": {
+      "DOMAIN": { "NAME": "Dominio", "DESC": "Producto cultural" },
+      "KINGDOM": { "NAME": "Reino", "DESC": "Artefactos" },
+      "PHYLUM": { "NAME": "Filo", "DESC": "Naturaleza ontológica" },
+      "CLASS": { "NAME": "Clase", "DESC": "Forma estructural" },
+      "ORDER": { "NAME": "Orden", "DESC": "Modo de operación" },
+      "FAMILY": { "NAME": "Familia", "DESC": "Función general" },
+      "GENUS": { "NAME": "Género", "DESC": "Función específica" },
+      "SPECIES": { "NAME": "Especie", "DESC": "Diseño identificable" }
+    },
+    "WHO_TITLE": "¿Para quién es?",
+    "WHO_TEXT": "Investigadores, diseñadores, historiadores de la tecnología, profesionales del patrimonio, ingenieros, curadores, estudiantes y comunidades interesadas en cómo se organizan los objetos técnicos y culturales.",
+    "CTA": "Explorar los artefactos"
+  },
+  "LOGIN": {
     "TITLE": "Iniciar sesión",
     "USERNAME": "Usuario",
     "PASSWORD": "Contraseña",
