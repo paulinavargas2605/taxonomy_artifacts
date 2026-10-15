@@ -25,12 +25,9 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { CategoryService } from '../../services/category.service';
 import { Phylum, TaxonomicClass, Order, Family, Genus, Species } from '../../models/category';
-import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { ArtifactService } from '../../services/artifact.service';
 import { AuthService } from '../../services/auth.service';
-
-const ADMIN_USER_TYPE = 4;
 
 @Component({
   selector: 'app-artifact-form',
@@ -55,10 +52,7 @@ export class ArtifactFormComponent implements OnInit {
 
   form: FormGroup;
 
-  users: User[] = [];
-
   currentUser: User | null = null;
-  isAdmin = false;
 
   phyla: Phylum[] = [];
   classes: TaxonomicClass[] = [];
@@ -84,7 +78,6 @@ export class ArtifactFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private userService: UserService,
     private artifactService: ArtifactService,
     private authService: AuthService,
     private dialogRef: MatDialogRef<ArtifactFormComponent>,
@@ -113,10 +106,8 @@ export class ArtifactFormComponent implements OnInit {
 
     this.currentUser = this.authService.getCurrentUser();
 
-    this.isAdmin = this.currentUser?.id_user_type === ADMIN_USER_TYPE;
-
-    // when creating, the logged-in user is the default creator
-    // (only admins can change it; in edit mode the original owner is kept)
+    // when creating, the creator is always the user with the active session
+    // (in edit mode the original owner is kept)
     if (!data && this.currentUser) {
 
       this.form.patchValue({ id_user: this.currentUser.id_user });
@@ -128,10 +119,6 @@ export class ArtifactFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.loadPhyla();
-
-    if (this.isAdmin) {
-      this.loadUsers();
-    }
 
     if (this.editMode && this.selectedSpecies) {
 
@@ -147,13 +134,6 @@ export class ArtifactFormComponent implements OnInit {
 
     }
 
-  }
-
-  loadUsers() {
-    this.userService.list().subscribe({
-      next: (data) => { this.users = data; },
-      error: () => {}
-    });
   }
 
   loadPhyla() {

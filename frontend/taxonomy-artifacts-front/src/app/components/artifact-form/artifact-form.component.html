@@ -215,25 +215,7 @@
 
             </mat-form-field>
 
-                        <mat-form-field appearance="outline" *ngIf="isAdmin">
-
-                <mat-label>User</mat-label>
-
-                <mat-select formControlName="id_user">
-
-                    <mat-option
-                        *ngFor="let user of users"
-                        [value]="user.id_user">
-
-                        {{ user.username }}
-
-                    </mat-option>
-
-                </mat-select>
-
-            </mat-form-field>
-
-            <div class="current-species" *ngIf="!isAdmin && !editMode && currentUser">
+            <div class="current-species" *ngIf="!editMode && currentUser">
 
                 Creating as: <strong>{{ currentUser.username }}</strong>
 

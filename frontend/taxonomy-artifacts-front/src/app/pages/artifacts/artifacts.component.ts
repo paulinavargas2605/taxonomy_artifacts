@@ -92,15 +92,26 @@ export class ArtifactsComponent implements OnInit {
 
   }
 
+  // Returns true if there is an active session. Otherwise sends the
+  // person to the login page and returns false.
+  private requireLogin(redirect?: string): boolean {
+
+    if (this.authService.isLoggedIn()) {
+      return true;
+    }
+
+    this.router.navigate(
+      ['/login'],
+      redirect ? { queryParams: { redirect } } : {}
+    );
+
+    return false;
+
+  }
+
   newArtifact() {
 
-    if (!this.authService.isLoggedIn()) {
-
-      this.router.navigate(['/login'], { queryParams: { redirect: 'new-artifact' } });
-
-      return;
-
-    }
+    if (!this.requireLogin('new-artifact')) return;
 
     const dialog = this.dialog.open(ArtifactFormComponent, {
 
@@ -149,6 +160,8 @@ export class ArtifactsComponent implements OnInit {
   }
 
   edit(artifact: Artifact) {
+
+    if (!this.requireLogin()) return;
 
     const dialog = this.dialog.open(ArtifactFormComponent, {
 
@@ -202,6 +215,8 @@ export class ArtifactsComponent implements OnInit {
   }
 
   delete(artifact: Artifact) {
+
+    if (!this.requireLogin()) return;
 
     const confirmText = this.translate.instant('ARTIFACTS.CONFIRM_DELETE', { name: artifact.name });
 
