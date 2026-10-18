@@ -20,22 +20,6 @@
     [dataSource]="users"
     class="mat-elevation-z2">
 
-        <ng-container matColumnDef="id">
-
-            <th mat-header-cell *matHeaderCellDef>
-
-                {{ 'USERS.COLUMN_ID' | translate }}
-
-            </th>
-
-            <td mat-cell *matCellDef="let user">
-
-                {{user.id_user}}
-
-            </td>
-
-        </ng-container>
-
         <ng-container matColumnDef="name">
 
             <th mat-header-cell *matHeaderCellDef>
@@ -78,7 +62,7 @@
 
             <td mat-cell *matCellDef="let user">
 
-                {{user.id_user_type}}
+                {{ userTypeName(user.id_user_type) }}
 
             </td>
 

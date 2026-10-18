@@ -4,7 +4,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
+import { UserTypeService } from '../../services/user-type.service';
 import { User } from '../../models/user';
+import { UserType } from '../../models/user-type';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -30,8 +32,9 @@ export class UsersComponent implements OnInit{
 
   users:User[]=[];
 
+  userTypes: UserType[] = [];
+
   displayedColumns=[
-    'id',
     'name',
     'email',
     'type',
@@ -40,6 +43,7 @@ export class UsersComponent implements OnInit{
 
   constructor(
     private userService: UserService,
+    private userTypeService: UserTypeService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private translate: TranslateService
@@ -48,6 +52,8 @@ export class UsersComponent implements OnInit{
   ngOnInit(): void {
 
     this.listUsers();
+
+    this.loadUserTypes();
 
   }
 
@@ -64,6 +70,35 @@ export class UsersComponent implements OnInit{
       error:(e)=>console.log(e)
 
     });
+
+  }
+
+  loadUserTypes() {
+
+    this.userTypeService.list().subscribe({
+
+      next: (types) => {
+
+        this.userTypes = types;
+
+      },
+
+      error: () => {}
+
+    });
+
+  }
+
+  // Shows the type's name instead of its id. While the types are still
+  // loading it returns an empty text; if a type is not found, it falls
+  // back to the id so nothing is silently hidden.
+  userTypeName(idUserType: number): string {
+
+    if (!this.userTypes.length) return '';
+
+    const type = this.userTypes.find(t => t.id_user_type === idUserType);
+
+    return type ? type.name : String(idUserType);
 
   }
 
