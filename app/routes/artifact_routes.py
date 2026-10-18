@@ -7,7 +7,8 @@ from app.controllers.artifact_controller import (
     modify_artifact,
     remove_artifact,
     upload_image,
-    get_classified
+    get_classified,
+    get_all_classified
 )
 
 router = APIRouter(prefix="/artifacts", tags=["Artifacts"])
@@ -23,6 +24,11 @@ async def upload_image_endpoint(file: UploadFile = File(...)):
     contents = await file.read()
     url = upload_image(contents, file.filename, file.content_type)
     return {"image_url": url}
+
+
+@router.get("/classified")
+def list_classified_endpoint():
+    return get_all_classified()
 
 
 @router.get("/{id_artifact}/classified")

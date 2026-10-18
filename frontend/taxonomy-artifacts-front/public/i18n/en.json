@@ -12,6 +12,19 @@
     "EN": "EN",
     "ES": "ES"
   },
+    "SEARCH": {
+    "PLACEHOLDER": "Search artifacts...",
+    "FILTER_TITLE": "Filter by category",
+    "ALL": "All categories",
+    "NAME": "Artifact name",
+    "SPECIES": "Species",
+    "GENUS": "Genus",
+    "FAMILY": "Family",
+    "ORDER": "Order",
+    "CLASS": "Class",
+    "PHYLUM": "Phylum",
+    "NO_RESULTS": "No artifacts match your search."
+  },
   "HOME": {
     "TITLE": "General Taxonomy of Artifacts",
     "LEAD": "This platform organizes the vast diversity of artifacts that are part of human life — tools, machines, technical substances, informational systems, symbolic objects, and biotechnological devices — under a common classification framework inspired by biological taxonomy.",

@@ -136,6 +136,23 @@ def get_classified_artifact(id_artifact):
             detail="An error occurred while fetching the classified artifact."
         )
 
+def list_classified_artifacts():
+    try:
+        response = (
+            supabase
+            .table("classified_artifact")
+            .select("*")
+            .execute()
+        )
+
+        return response.data
+
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="An error occurred while listing the classified artifacts."
+        )
+
 
 def upload_artifact_image(file_bytes: bytes, filename: str, content_type: str) -> str:
     try:

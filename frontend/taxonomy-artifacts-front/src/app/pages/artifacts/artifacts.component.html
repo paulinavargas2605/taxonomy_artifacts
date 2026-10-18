@@ -7,9 +7,67 @@
     </button>
   </div>
 
+  <div class="search-bar">
+
+    <mat-form-field appearance="outline" class="search-field" subscriptSizing="dynamic">
+
+      <mat-icon matPrefix>search</mat-icon>
+
+      <input
+        matInput
+        type="text"
+        [ngModel]="searchText"
+        (ngModelChange)="onSearchChange($event)"
+        [placeholder]="'SEARCH.PLACEHOLDER' | translate">
+
+      <div matSuffix class="suffix-actions">
+
+        <button
+          mat-icon-button
+          type="button"
+          *ngIf="searchText"
+          (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          type="button"
+          class="filter-btn"
+          [class.filter-active]="searchField !== 'all'"
+          [matMenuTriggerFor]="filterMenu">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+
+      </div>
+
+    </mat-form-field>
+
+    <mat-menu #filterMenu="matMenu">
+
+      <div class="filter-menu-title" (click)="$event.stopPropagation()">
+        {{ 'SEARCH.FILTER_TITLE' | translate }}
+      </div>
+
+      <button
+        mat-menu-item
+        *ngFor="let option of filterOptions"
+        (click)="setSearchField(option.value)">
+        <mat-icon>{{ searchField === option.value ? 'check' : '' }}</mat-icon>
+        <span>{{ option.labelKey | translate }}</span>
+      </button>
+
+    </mat-menu>
+
+  </div>
+
+  <p class="no-results" *ngIf="searchText && filteredArtifacts.length === 0">
+    {{ 'SEARCH.NO_RESULTS' | translate }}
+  </p>
+
   <div class="artifact-grid">
     <mat-card
-      *ngFor="let artifact of artifacts"
+      *ngFor="let artifact of filteredArtifacts"
       class="artifact-card"
       [class.inactive]="!artifact.active"
       (click)="viewDetail(artifact)">

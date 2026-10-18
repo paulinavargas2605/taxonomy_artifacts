@@ -12,6 +12,19 @@
     "EN": "IN",
     "ES": "ES"
   },
+    "SEARCH": {
+    "PLACEHOLDER": "Buscar artefactos...",
+    "FILTER_TITLE": "Filtrar por categoría",
+    "ALL": "Todas las categorías",
+    "NAME": "Nombre del artefacto",
+    "SPECIES": "Especie",
+    "GENUS": "Género",
+    "FAMILY": "Familia",
+    "ORDER": "Orden",
+    "CLASS": "Clase",
+    "PHYLUM": "Filo",
+    "NO_RESULTS": "Ningún artefacto coincide con tu búsqueda."
+  },
   "HOME": {
     "TITLE": "Taxonomía General de Artefactos",
     "LEAD": "Esta plataforma organiza la enorme diversidad de artefactos que forman parte de la vida humana — herramientas, máquinas, sustancias técnicas, sistemas informacionales, objetos simbólicos y dispositivos biotecnológicos — bajo un marco de clasificación común, inspirado en la taxonomía biológica.",

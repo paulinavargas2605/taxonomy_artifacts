@@ -5,7 +5,8 @@ from app.services.artifact_service import (
     update_artifact,
     delete_artifact,
     upload_artifact_image,
-    get_classified_artifact
+    get_classified_artifact,
+    list_classified_artifacts
 )
 
 
@@ -23,6 +24,10 @@ def get_one_artifact(id_artifact):
 
 def get_classified(id_artifact):
     return get_classified_artifact(id_artifact)
+
+
+def get_all_classified():
+    return list_classified_artifacts()
 
 
 def register_artifact(data):

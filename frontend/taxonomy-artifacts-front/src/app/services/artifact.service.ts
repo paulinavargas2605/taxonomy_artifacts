@@ -62,4 +62,10 @@ export class ArtifactService {
 
   }
 
+  listClassified(): Observable<ClassifiedArtifact[]> {
+
+    return this.http.get<ClassifiedArtifact[]>(`${this.api}/classified`);
+
+  }
+
 }
