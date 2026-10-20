@@ -296,10 +296,12 @@ export class ArtifactsComponent implements OnInit {
 
         },
 
-        error: () => {
+        error: (err) => {
 
           this.snackBar.open(
-            this.translate.instant('ARTIFACTS.CREATE_ERROR'),
+            this.translate.instant(
+              err.status === 409 ? 'ARTIFACTS.DUPLICATE' : 'ARTIFACTS.CREATE_ERROR'
+            ),
             this.translate.instant('ARTIFACTS.CLOSE'),
             {
               duration: 3000
@@ -351,10 +353,12 @@ export class ArtifactsComponent implements OnInit {
 
         },
 
-        error: () => {
+        error: (err) => {
 
           this.snackBar.open(
-            this.translate.instant('ARTIFACTS.UPDATE_ERROR'),
+            this.translate.instant(
+              err.status === 409 ? 'ARTIFACTS.DUPLICATE' : 'ARTIFACTS.UPDATE_ERROR'
+            ),
             this.translate.instant('ARTIFACTS.CLOSE'),
             {
               duration: 3000

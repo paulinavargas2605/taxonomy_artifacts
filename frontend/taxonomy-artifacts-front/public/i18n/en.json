@@ -69,6 +69,7 @@
     "DELETED": "Artifact deleted",
     "DELETE_ERROR": "Could not delete",
     "CLOSE": "Close",
+    "DUPLICATE": "An artifact for this species already exists.",
     "CONFIRM_DELETE": "Delete \"{{name}}\"?"
   },
   "USERS": {

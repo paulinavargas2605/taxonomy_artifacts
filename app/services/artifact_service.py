@@ -5,7 +5,7 @@ from fastapi import HTTPException
 from app.database.connection import supabase
 
 BUCKET_NAME = "artifact-images"
-
+DUPLICATE_ARTIFACT_MESSAGE = "An artifact for this species already exists."
 
 def list_artifacts():
     try:
@@ -53,8 +53,27 @@ def get_artifact(id_artifact):
         )
 
 
+def _is_duplicate_error(error: Exception) -> bool:
+    text = str(error).lower()
+    return "23505" in text or "duplicate key" in text
+
+
 def create_artifact(data):
     try:
+        existing = (
+            supabase
+            .table("artifact")
+            .select("id_artifact")
+            .eq("id_species", data["id_species"])
+            .execute()
+        )
+
+        if existing.data:
+            raise HTTPException(
+                status_code=409,
+                detail=DUPLICATE_ARTIFACT_MESSAGE
+            )
+
         response = (
             supabase
             .table("artifact")
@@ -64,7 +83,16 @@ def create_artifact(data):
 
         return response.data
 
-    except Exception:
+    except HTTPException:
+        raise
+
+    except Exception as e:
+        if _is_duplicate_error(e):
+            raise HTTPException(
+                status_code=409,
+                detail=DUPLICATE_ARTIFACT_MESSAGE
+            )
+
         raise HTTPException(
             status_code=500,
             detail="An error occurred while creating the artifact."
@@ -73,6 +101,22 @@ def create_artifact(data):
 
 def update_artifact(id_artifact, data):
     try:
+        if data.get("id_species") is not None:
+            existing = (
+                supabase
+                .table("artifact")
+                .select("id_artifact")
+                .eq("id_species", data["id_species"])
+                .neq("id_artifact", id_artifact)
+                .execute()
+            )
+
+            if existing.data:
+                raise HTTPException(
+                    status_code=409,
+                    detail=DUPLICATE_ARTIFACT_MESSAGE
+                )
+
         response = (
             supabase
             .table("artifact")
@@ -83,7 +127,16 @@ def update_artifact(id_artifact, data):
 
         return response.data
 
-    except Exception:
+    except HTTPException:
+        raise
+
+    except Exception as e:
+        if _is_duplicate_error(e):
+            raise HTTPException(
+                status_code=409,
+                detail=DUPLICATE_ARTIFACT_MESSAGE
+            )
+
         raise HTTPException(
             status_code=500,
             detail="An error occurred while updating the artifact."

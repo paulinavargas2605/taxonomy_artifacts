@@ -69,6 +69,7 @@
     "DELETED": "Artefacto eliminado",
     "DELETE_ERROR": "No se pudo eliminar",
     "CLOSE": "Cerrar",
+    "DUPLICATE": "Ya existe un artefacto para esta especie.",
     "CONFIRM_DELETE": "¿Eliminar \"{{name}}\"?"
   },
   "USERS": {
