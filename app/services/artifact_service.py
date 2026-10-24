@@ -7,23 +7,6 @@ from app.database.connection import supabase
 BUCKET_NAME = "artifact-images"
 DUPLICATE_ARTIFACT_MESSAGE = "An artifact for this species already exists."
 
-def list_artifacts():
-    try:
-        response = (
-            supabase
-            .table("artifact")
-            .select("*")
-            .execute()
-        )
-
-        return response.data
-
-    except Exception:
-        raise HTTPException(
-            status_code=500,
-            detail="An error occurred while listing artifacts."
-        )
-
 
 def get_artifact(id_artifact):
     try:
@@ -189,23 +172,6 @@ def get_classified_artifact(id_artifact):
             detail="An error occurred while fetching the classified artifact."
         )
 
-def list_classified_artifacts():
-    try:
-        response = (
-            supabase
-            .table("classified_artifact")
-            .select("*")
-            .execute()
-        )
-
-        return response.data
-
-    except Exception:
-        raise HTTPException(
-            status_code=500,
-            detail="An error occurred while listing the classified artifacts."
-        )
-
 
 def upload_artifact_image(file_bytes: bytes, filename: str, content_type: str) -> str:
     try:
@@ -226,4 +192,50 @@ def upload_artifact_image(file_bytes: bytes, filename: str, content_type: str) -
         raise HTTPException(
             status_code=500,
             detail="An error occurred while uploading the image."
+        )
+
+def _fetch_all(table, order_by, page_size=1000):
+    rows = []
+    start = 0
+
+    while True:
+        response = (
+            supabase
+            .table(table)
+            .select("*")
+            .order(order_by)
+            .range(start, start + page_size - 1)
+            .execute()
+        )
+
+        batch = response.data or []
+        rows.extend(batch)
+
+        if len(batch) < page_size:
+            break
+
+        start += page_size
+
+    return rows
+
+
+def list_artifacts():
+    try:
+        return _fetch_all("artifact", "id_artifact")
+
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="An error occurred while listing artifacts."
+        )
+
+
+def list_classified_artifacts():
+    try:
+        return _fetch_all("classified_artifact", "id_artifact")
+
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="An error occurred while listing the classified artifacts."
         )
